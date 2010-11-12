@@ -1,0 +1,51 @@
+<table border="1" align="center" class="tabelas">
+      <% @pontuacao.each do |check_professor| %>
+          <tr>
+            <th>
+              Matricula
+            </th>
+            <th>
+              Soma dos titulos
+            </th>
+            <th>
+              Soma Trabalhados
+            </th>
+            <th>
+              Total Somado
+            </th>
+            <th>
+              Total Registrado
+            </th>
+            <th>
+              Status
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <%= check_professor.matricula %>
+            </td>
+            <td>
+             <%= total_titulacao = TituloProfessor.check_titulos($data,check_professor.id).total_titulacao %>
+            </td>
+            <td>
+             <%= total_trabalhado = TituloProfessor.check_titulos($data,check_professor.id).total_trabalhado %>
+            </td>
+            <td>
+             <%= total = total_trabalhado.to_d + total_titulacao.to_d %>
+            </td>
+            <td>
+              <%= pontuacao_final = (TituloProfessor.check_titulos($data,check_professor.id).pontuacao_final).to_d %>
+            </td>
+            <% if total == pontuacao_final %>
+              <td>
+                OK
+              </td>
+            <%else%>
+              <td>
+                Problemas
+              </td>
+            <%end%>
+          </tr>
+      <%end%>
+</table>
+

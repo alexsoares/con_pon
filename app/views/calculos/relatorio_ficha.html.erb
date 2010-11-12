@@ -1,0 +1,42 @@
+<div class="botao">
+  <div class="separator">
+    <table width="100%">
+      <% form_tag relatorio_ficha_path, :method => 'get' do %>
+        <p>
+          <tr>
+            <td align="right"> Matricula:
+              <%= text_field_tag :search, params[:search] %>
+              <%= submit_tag "Filtrar", :name => nil %>
+            </td>
+          </tr>
+        </p>
+      <% end %>
+    </table>
+  </div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<h2 align="center">Professores que possuem fichas geradas para 2010</h2>
+     <table border="1" class="tabelas" align="center" rules="all" frame="box">
+        <tr>
+          <th>Matricula</th>
+          <th>Professor</th>
+          <th>Sede</th>
+          <th></th>
+        </tr>
+          <% @professor_com_ficha.each do |ficha| %>
+            <tr>
+              <td><%=h ficha.professor.matricula %></td>
+              <td><%=h ficha.professor.nome %></td>
+              <td><%=h ficha.professor.unidade.nome %></td>
+              <td><%= link_to 'Visualizar', [ficha.professor,ficha] %></td>
+            </tr>
+          <%end%>
+          <tr>
+            <td colspan="5" align="center">
+              <%= will_paginate @professor_com_ficha %>
+            </td>
+          </tr>
+    </table>

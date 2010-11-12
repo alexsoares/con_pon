@@ -1,0 +1,284 @@
+body {
+margin:0;
+background-image:url(Imagens/adrie.jpg);background-repeat:repeat;
+
+}
+root {
+    display: block;
+}
+a { color: blue;
+
+    }
+a:visited { color: gray; }
+
+.botao3d a { color: white;
+
+    }
+.botao3d a:visited { color: white; }
+#conteudo {
+    margin:25px;
+}
+#tabela {
+  position: relative;
+  left: 80px;
+}
+#voltar {
+margin:25px;
+}
+
+#alinha{
+    margin-left:95px;
+    margin-right:95px;
+}
+#instrucoes{
+ position: absolute;
+ left: 700px;
+ top: 180px;
+}
+
+#loginn {
+   position: absolute;
+   left: 960px;
+   top: 150px;
+   }
+
+#calcular {
+   position: absolute;
+   left: 500px;
+   top: 540px;
+   }
+
+#obs {
+   position: absolute;
+   left: 600px;
+   top: 360px;
+   }
+
+#topo {
+background-image:url(Imagens/logo.jpg);
+background-repeat: no-repeat;
+text-align: center;
+color:white;
+width:100%;
+height:80px;
+margin:0;
+font:bold;
+}
+#rodape{
+    background-image:url(Imagens/fundo_rodape.jpg);
+    margin:25px;
+  	position:relative;
+    width:96%;
+    color:white;
+    text-align:center;
+}
+#mensagem{
+font: bold;
+font-size:large;
+text-align: left;
+color: red;
+}
+.menu_list {
+	width: 1100px;
+}
+.menu_head {
+	padding: 1px 1px;
+	cursor: pointer;
+	position: relative;
+	margin:1px;
+    font-weight:bold;
+    font-size: medium;
+
+}
+.menu_body {
+    padding: 0px 67px;
+    display:none;
+    font-size: large;
+
+ }
+ #menu li {
+  display:inline;
+
+}
+
+#menu li a {
+  padding:1px;
+  border:1px solid black;
+  text-decoration:none;
+  width:130px;
+
+  float:left;
+}
+#menu ul {
+  padding:0;
+  margin:0;
+  float:left;
+  width:100%;
+  list-style:none;
+
+}
+
+#nome_aviso {
+font: bold;
+font-size:x-large;
+color: red;
+}
+
+#mensagem{
+font: bold;
+font-size:large;
+text-align: left;
+color: red;
+}
+
+#descricao {
+font: bold;
+font-size:medium;
+text-align: left;
+color: green;
+}
+
+#Certeza{
+font: bold;
+font-size:x-large;
+color: red;
+}
+#asterisco{
+ color: red;
+font-size: large;
+}
+
+#informacao{
+    margin:25px;
+  	position:relative;
+    width:96%;
+    color:white;
+    text-align:center;
+}
+
+#img{
+   background-image:url(Imagens/professores.gif);
+   background-repeat: no-repeat;
+   text-align: center;
+   color:white;
+   width:100%;
+   height:386px;
+   margin:0;
+   font:bold;
+   border-color:black;
+   border-left: double;
+   border-bottom: double;
+   border-top: double;
+   border-right: double;
+}
+
+#rodape_login{
+    background-image:url(Imagens/fundo_rodape.jpg);
+    color:white;
+    text-align:center;
+}
+
+.cx th {background-color:white}
+.cx td {background-color:yellow}
+
+.botao3d a {
+    text-decoration:none;
+}
+
+#contents{
+    margin:0 auto;    
+    height:800px;
+    background-image:url(Imagens/body.jpg);
+    width:950px;
+
+}
+
+#principal{
+    float:right;
+    height:800px;
+    width:950px;
+    background-image:url(Imagens/body.jpg);
+    font-size:10px;
+}
+
+.relatorios th {
+    background-color:white;
+}
+
+.relatorios td {
+    background-color:#fbf5b5;
+    padding:inherit;
+    font-size:10px;
+}
+
+.relatorios tr:hover {
+    background-color:blue;
+}
+
+
+#busca_ficha
+{
+    float:right;
+    height:70px;
+    width:950px;
+    background-color:#c4c4c4;
+    font-size:10px;
+}
+
+#separator
+{
+    float:right;
+    height:50px;
+    width:950px;
+    background-color:#c4c4c4;
+    font-size:10px;
+}
+
+#teste
+{
+    float:right;
+    height:1340px;
+    width:950px;
+    background-color:#c4c4c4;
+    font-size:10px;
+
+}
+
+  .botao3d{
+        font-size:14px;
+        font-family:Verdana,Helvetica;
+        font-weight:bold;
+        background-color:#a9b9c2;
+        border:0px;
+        text-decoration:none;
+        display:inline;
+        border-top: gray 1px solid;
+        border-right: gray 1px solid;
+        border-bottom: gray 1px solid;
+        border-left: gray 1px solid;
+
+       }
+
+.botao #caixa {
+    border-width: medium;
+    border-style: solid;
+    border-color: #0000FF;
+}
+
+.botao3d:hover{
+        font-size:14px;
+        font-family:Verdana,Helvetica;
+        font-weight:bold;
+        color:white;
+        background-color:#646566;
+        border:0px;
+        width:100px;
+        height:19px;
+        text-decoration:none;
+        display:inline;
+        border-top: #FF8585 1px solid;
+        border-right: #410000 1px solid;
+        border-bottom: #410000 1px solid;
+        border-left: #FF8585 1px solid;
+
+    }

@@ -1,0 +1,36 @@
+<div id="conteudo">
+<br/>
+<fieldset><legend>Alteração de usuário</legend>
+   <%= error_messages_for :user %>
+
+       <% form_for(@user) do |f| %>
+       <p><label for="login">Usuário:</label><br/>
+       <%= f.text_field :login %></p>
+
+       <p><label for="password">Senha:</label><br/>
+       <%= f.password_field :password %></p>
+
+       <p><label for="password_confirmation">Confirmação Senha:</label><br/>
+       <%= f.password_field :password_confirmation %></p>
+
+       <p><label for="regiao_id">Unidade:</label><br/>
+               <%= f.collection_select :regiao_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- ' %></p>
+             <%= observe_field :user_regiao_id,
+             :with => :user_regiao_id,
+             :update => 'aviso',
+             :url => { :action => 'reg_id' } %>
+             <div id="aviso"></div>
+       <p><label for="email">Email:</label>
+       <%= f.text_field :email %></p>
+       <p><label for="layout"></label>
+       <%= f.select :layout,User::LAYOUT %></p>
+
+       <p><%= submit_tag 'Alterar' %></p>
+      <% end %>
+
+
+</fieldset>
+<br/>
+<%= link_to 'Voltar', root_path %>
+</div>
+

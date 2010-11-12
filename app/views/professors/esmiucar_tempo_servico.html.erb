@@ -1,0 +1,75 @@
+<h2>Check</h2>
+<table border="1" align="center" class="tabelas">
+      <tr align="center">
+        <th></th>
+        <th colspan="5">Trabalhados</th>
+        <th colspan="5">Efetivos</th>
+        <th colspan="5">Rede</th>
+        <th colspan="5">Unidade</th>
+        <th>Check</th>
+      </tr>
+      <tr>
+        <th>Matricula</th>
+
+        <th>Ant Trab</th>
+        <th></th>
+        <th>Trabalhados</th>
+        <th></th>
+        <th>Acum Trab</th>
+
+        <th>Ant Efet</th>
+        <th></th>
+        <th>Efetivos</th>
+        <th></th>
+        <th>Acum Efetivos</th>
+
+        <th>Ant Rede</th>
+        <th></th>
+        <th>Rede</th>
+        <th></th>
+        <th>Acum Rede</th>
+
+        <th>Ant Unid</th>
+        <th></th>
+        <th>Unidade</th>
+        <th></th>
+        <th>Acum Unidade</th>
+
+      </tr>
+      <% @tempo.each do |tempo| %>
+      <tr align="center">
+        <td><%= tempo.matricula %></td>
+        <td><%= acum_ant_trab = AcumTrab.acum(tempo).tot_acum_ant_trab %></td>
+        <td>+</td>
+        <td><%= atual_trab = Trabalhado.check_trab(tempo,$data).soma_trab%></td>
+        <td>=</td>
+        <td><%= somado_trab = AcumTrab.acum(tempo).tot_acum_trab %> </td>
+
+        <td><%= acum_ant_efet = AcumTrab.acum(tempo).tot_acum_ant_efet %></td>
+        <td>+</td>
+        <td><%= atual_efet = Trabalhado.check_efet(tempo,$data).soma_efet%></td>
+        <td>=</td>
+        <td><%= somado_efet = AcumTrab.acum(tempo).tot_acum_efet %> </td>
+
+        <td><%= acum_ant_rede = AcumTrab.acum(tempo).tot_acum_ant_rede %></td>
+        <td>+</td>
+        <td><%= atual_rede = Trabalhado.check_rede(tempo,$data).soma_rede%></td>
+        <td>=</td>
+        <td><%= somado_rede = AcumTrab.acum(tempo).tot_acum_rede %> </td>
+
+        <td><%= acum_ant_unid = AcumTrab.acum(tempo).tot_acum_ant_unid %></td>
+        <td>+</td>
+        <td><%= atual_unid = Trabalhado.check_unid(tempo,$data).soma_unid%></td>
+        <td>=</td>
+        <td><%= somado_unid = AcumTrab.acum(tempo).tot_acum_unid %> </td>
+
+        <% if (((acum_ant_trab.to_i + atual_trab.to_i) == somado_trab.to_i) && ((acum_ant_efet.to_i + atual_efet.to_i) == somado_efet.to_i) && ((acum_ant_rede.to_i + atual_rede.to_i) == somado_rede.to_i) && ((acum_ant_unid.to_i + atual_unid.to_i) == somado_unid.to_i)) %>
+          <td>Ok</td>
+        <%else%>
+          <td>Problemas</td>
+        <%end%>
+      </tr>
+      <tr></tr>
+    <%end%>
+</table>
+<%= will_paginate @tempo %>
