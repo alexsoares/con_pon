@@ -1,8 +1,7 @@
-set :application, "192.168.0.118"
-set :repository, "git@192.168.0.118:~/repositorio/consulta_pon.git"
 
-
-set :user, "git"
+set :application, "192.168.0.247"
+set :repository, "git://github.com/alexsoares/con_pon.git"
+set :user, "administrador"
 set :use_sudo, false
 set :deploy_to, "/home/#{user}/consulta_pon"
 
