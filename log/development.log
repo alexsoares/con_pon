@@ -1131,3 +1131,6 @@ Processing VisaosController#index (for 127.0.0.1 at 2010-11-17 12:23:00) [GET]
 Rendering template within layouts/exibicao
 Rendering visaos/index
 Completed in 101ms (View: 18, DB: 2) | 200 OK [http://localhost/]
+DEPRECATION WARNING: require "activesupport" is deprecated and will be removed in Rails 3. Use require "active_support" instead.. (called from /home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/activesupport.rb:2)
+DEPRECATION WARNING: require "activesupport" is deprecated and will be removed in Rails 3. Use require "active_support" instead.. (called from /home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/activesupport.rb:2)
+DEPRECATION WARNING: require "activesupport" is deprecated and will be removed in Rails 3. Use require "active_support" instead.. (called from /home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/activesupport.rb:2)

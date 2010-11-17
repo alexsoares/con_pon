@@ -97,5 +97,5 @@ map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.ficha_automatica '/calculos/ficha_automatica', :controller => 'calculos', :action => 'ficha_automatica'
   map.relatorio_ficha '/calculos/relatorio_ficha', :controller => 'calculos', :action => 'relatorio_ficha'
   map.reset_password '/reset_password/:id', :controller => 'passwords', :action => 'edit'
-
+  map.home '/home', :controller => "home"
 end

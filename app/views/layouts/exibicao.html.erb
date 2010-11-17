@@ -29,7 +29,7 @@ display: none;
       <div id="topo">
       </div>               
           <%if logged_in? then%>
-            <%= link_to "Voltar", root_path %>
+            <%= link_to "Voltar", home_path %>
             <%= link_to "Logout", logout_path%>
           <%else%>
             <%= link_to '|Entrar|', login_path %>

@@ -6,11 +6,11 @@ class HomeController < ApplicationController
   layout :define_layout
 
   def define_layout
-    if Date.today >= ("2010-11-08").to_date
-      "consulta"
-    else
+    #if Date.today >= ("2010-11-08").to_date
+    #  "consulta"
+    #else
       current_user.layout
-    end
+    #end
   end
 
   def index
