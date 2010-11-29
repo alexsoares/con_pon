@@ -90,18 +90,20 @@ window.print();
                             </ul>
                           </li>
                         <%end%>
-                        <li><a href="#nogo29" class="fly">Remoção</a>
-                          <ul>
-                            <li><%= link_to 'Solicitar', new_remocao_path, {:title => 'Antes de Cadastrar a remocao de um professor, verifique na listagem ao lado se a mesma ja não esta criada'} %></li>
-                            <% if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('planejamento') then%>
-                              <li><%= link_to_remote('Aguardando',:update => "contents", :url => { :controller => "remocaos",:action => "remocao_sim"}) %></li>
-                            <%end%>
-                            <li><%= link_to_remote('Solicitada',:update => "contents", :url => { :action => "lista_remocao"}) %></li>
-                            <%  if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('direcao') or current_user.has_role?('planejamento') then%>
-                              <li><%= link_to_remote('Ficha', :url => { :action => "relato_remocao"}) %></li>
-                            <%end%>
-                         </ul>
-                       </li>
+                        <%  if (current_user.has_role?('supervisao')) or (current_user.has_role?('admin'))  or (current_user.has_role?('planejamento'))%>
+                          <li><a href="#nogo29" class="fly">Remoção</a>
+                            <ul>
+                              <li><%= link_to 'Solicitar', new_remocao_path, {:title => 'Antes de Cadastrar a remocao de um professor, verifique na listagem ao lado se a mesma ja não esta criada'} %></li>
+                              <% if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('planejamento') then%>
+                                <li><%= link_to_remote('Aguardando',:update => "contents", :url => { :controller => "remocaos",:action => "remocao_sim"}) %></li>
+                              <%end%>
+                              <li><%= link_to_remote('Solicitada',:update => "contents", :url => { :action => "lista_remocao"}) %></li>
+                              <%  if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('direcao') or current_user.has_role?('planejamento') then%>
+                                <li><%= link_to_remote('Ficha', :url => { :action => "relato_remocao"}) %></li>
+                              <%end%>
+                           </ul>
+                         </li>
+                       <%end%>
                        <li><b>Msg</b></li>
                        <li> <%= link_to 'Mensagens' , mensagems_path %></li>
                        <li><b>Fichas</b></li>
@@ -114,8 +116,8 @@ window.print();
                   <ul class="sub">
                     <li><b>Primário</b></li>
                     <li><%= link_to "Professores", new_professor_path %></li>
-                    <li><b>Secundários</b></li>
                     <%if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('planejamento') then%>
+                    <li><b>Secundários</b></li>
                       <li><%= link_to "Títulos", new_titulacao_path %></li>
                       <li><%= link_to "Unidades", new_unidade_path %></li>
                       <li><%= link_to "Região", new_regiao_path %></li>
@@ -156,8 +158,8 @@ window.print();
                       <li><%= link_to "Por descrição", relatorio_por_descricao_titulo_titulo_professors_path %></li>
                     </ul>
                   </li>
-          	      <li><b>Secundários</b></li>
                   <%if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('planejamento') then%>
+          	      <li><b>Secundários</b></li>
                     <li><%= link_to "Títulos", titulacaos_path %></li>
                     <li><%= link_to "Unidades", unidades_path %></li>
                     <li><%= link_to "Região", regiaos_path %></li>

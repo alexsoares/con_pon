@@ -81,7 +81,7 @@ SEDE = {'C. Cr. Arapiranga' => 'C. Cr. Arapiranga',
 
 CARGO = {'Diretor Ed. Básica'=> 'Diretor Ed. Básica',
           'Prof. Coordenador'=>'Prof. Coordenador',
-          'Pedagogo'=> 'Pedadogo',
+          'Pedagogo'=> 'Pedagogo',
           'ADI'=>'ADI',
           'Prof. de Creche'=>'Prof. de Creche',
           'PEB1 - Ed. Infantil'=> 'PEB1 - Ed. Infantil',

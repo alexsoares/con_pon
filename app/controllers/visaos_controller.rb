@@ -20,6 +20,10 @@ class VisaosController < ApplicationController
   end
 
 
+  def geral
+
+  end
+
   def infantil
     @search = Professor.search(params[:search])
     if !(params[:search].blank?)
