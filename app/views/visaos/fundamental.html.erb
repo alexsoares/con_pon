@@ -14,8 +14,9 @@
             </div>
 
             <td align="right">
+              <% fundamental = ['PEB2 - Inglês','PEB2 - Geografia','PEB2 - Ciências','PEB2 - Português','PEB2 - História','PEB2 - Matemática','PEB2 - Ed. Física','Diretor Ed. Básica','Pedagogo'] %>
               <%= f.label :funcao_equals, "Função" %>
-              <%= f.select :funcao_equals, options_for_select(CARGO), :include_blank => true%>
+              <%= f.select :funcao_equals, options_for_select(fundamental), :include_blank => true%>
             </td>            <td align="center" colspan="2">
               <%= f.submit "Buscar" %>
             </td>

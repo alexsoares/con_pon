@@ -117,15 +117,15 @@ class CalculosController < ApplicationController
 
     if params[:search].blank?
       if current_user.regiao_id == 53 or current_user.regiao_id == 52 then
-        @professor_com_ficha = Ficha.paginate(:all,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ?', $data])
+        @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ?', $data])
       else
-        @professor_com_ficha = Ficha.paginate(:all,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ? and (sede_id = ? or sede_id = 54)', $data, current_user.regiao_id])
+        @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ? and (professors.sede_id = ? or professors.sede_id = 54)', $data, current_user.regiao_id])
       end
     else
       if current_user.regiao_id == 53 or current_user.regiao_id == 52 then
         @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ? and professors.matricula = ?', $data,params[:search]])
       else
-        @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ? and (sede_id = ? or sede_id = 54)  and professors.matricula = ?', $data, current_user.regiao_id,params[:search]])
+        @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ? and (professors.sede_id = ? or professors.sede_id = 54)  and professors.matricula = ?', $data, current_user.regiao_id,params[:search]])
       end
 
     end

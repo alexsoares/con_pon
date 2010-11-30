@@ -3,7 +3,7 @@ set :application, "192.168.0.247"
 set :repository, "git://github.com/alexsoares/con_pon.git"
 set :user, "administrador"
 set :use_sudo, false
-set :deploy_to, "/home/#{user}/consulta_pon"
+set :deploy_to, "/home/#{user}/consulta_pon1"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`

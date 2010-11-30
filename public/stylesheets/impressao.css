@@ -31,6 +31,10 @@ root {
     font-size:10px;
 }
 
+#ficha2{
+    font-size:10px;
+}
+
 .relatorios tr:hover {
     background-color:blue;
 }

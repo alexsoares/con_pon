@@ -51,7 +51,7 @@ window.print();
                     </li>
                     <li class="top"><a href="#nogo27" id="executar" class="top_link"><span class="down">Executar</span></a>
                     <ul class="sub">
-                      <% if (current_user.has_role?('admin'))  or (current_user.has_role?('planejamento'))%>
+
                        <%if !(@ficha.nil?)%>
                         <li><a  href="#nogo29" class="fly">Gerar Ficha</a>
                           <ul>
@@ -64,7 +64,7 @@ window.print();
                           <li><%= link_to 'Gerar Ficha',gerar_ficha_professors_path %></li>
                        <%end%>
 
-                      <%end%>
+                      
                         <li><a href="#nogo29" class="fly">Pontuação</a>
                         <ul>
                           <li><%= link_to 'Tempo Serviço', new_trabalhado_path%></li>

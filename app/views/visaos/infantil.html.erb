@@ -17,7 +17,8 @@
 
             <td align="right">
               <%= f.label :funcao_equals, "Função" %>
-              <%= f.select :funcao_equals, options_for_select(CARGO), :include_blank => true%>
+              <% infantil = ["ADI","Prof. Creche","PEB1 - Ed. Infantil", "Prof. Coordenador"] %>
+              <%= f.select :funcao_equals, options_for_select(infantil), :include_blank => true%>
             </td>            <td align="center" colspan="2">
               <%= f.submit "Buscar" %>
             </td>

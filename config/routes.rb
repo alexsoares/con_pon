@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :logs
 
-  map.resources :visaos, :collection => {:fundamental => :get, :infantil => :get, :ambos => :get}
+  map.resources :visaos, :collection => {:fundamental => :get, :infantil => :get, :ambos => :get, :instrucao => :get}
 
   map.resources :remocaos
 
