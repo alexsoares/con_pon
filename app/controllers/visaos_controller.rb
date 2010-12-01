@@ -53,7 +53,7 @@ class VisaosController < ApplicationController
 
 
   def instrucao
-    instrucao =<<-HEREDOC
+    @instrucao =<<-HEREDOC
 
     Para imprimir a ficha de pontuação individual dos professores,
        é necessário possuir um login com no mínimo acesso de
@@ -80,10 +80,6 @@ class VisaosController < ApplicationController
       Para retornar ao ambiente de consulta dos listões vá em: "Arquivo>Inicio".
 
                HEREDOC
-    render :update do |page|
-      page.replace_html 'instrucoes', :text => '1'
-    end
-
 
   end
 
