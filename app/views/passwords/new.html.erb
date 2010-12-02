@@ -11,10 +11,11 @@
   <tr>
     <td>
       <% form_tag url_for(:action => 'create') do %>
-        Insira o e-mail utilizado para efetuar o cadastro<br />
+        Insira o e-mail utilizado para efetuar o cadastro
         <%= text_field_tag :email, "", :size => 50 %>
         <%= submit_tag 'Enviar' %>
       <% end %>
+
     </td>
   </tr>
   <tr>

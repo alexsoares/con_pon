@@ -26,7 +26,7 @@
         <%end%>
       <%end%>
     <%end%>
-
+    <p>Email: <%= @user.email %></p>
     <p>Adicionado em: <%= @user.created_at.to_s(:long) %></p>
 
    |<%=  link_to 'Voltar', root_path%>|

@@ -2,6 +2,7 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   LAYOUT = %w(application alternative)
   has_one :roles_user, :dependent => :delete
+  belongs_to :unidade, :class_name => "Unidade" ,:foreign_key => "regiao_id"
   
   
   # ---------------------------------------

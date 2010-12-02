@@ -1,6 +1,7 @@
 class Unidade < ActiveRecord::Base
   belongs_to :regiao
   has_many :professors
+  has_many :users
   named_scope :fundamental, :conditions => ["tipo in (4,5,6,7)"]
   named_scope :infantil, :conditions => ["tipo in (1,2,3,7)"]
   named_scope :todos, :conditions => ["tipo in (1,2,3,4,5,6,7)"]
