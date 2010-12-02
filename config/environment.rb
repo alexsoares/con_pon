@@ -89,6 +89,7 @@ Rails::Initializer.run do |config|
 config.i18n.default_locale = "pt-BR"
 
 end
+require 'smtp_tls'
 ActionMailer::Base.default_content_type = "text/html"
 ActionMailer::Base.smtp_settings = {
    :address => "smtp.gmail.com",
