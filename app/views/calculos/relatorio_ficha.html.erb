@@ -19,6 +19,7 @@
 <br/>
 <br/>
 <h2 align="center">Professores que possuem fichas geradas para 2010</h2>
+
      <table border="1" class="tabelas" align="center" rules="all" frame="box">
         <tr>
           <th>Matricula</th>
@@ -32,6 +33,9 @@
               <td><%=h ficha.professor.nome %></td>
               <td><%=h ficha.professor.unidade.nome %></td>
               <td><%= link_to 'Visualizar', [ficha.professor,ficha] %></td>
+              <% if (current_user.has_role?('admin'))  or (current_user.has_role?('planejamento'))%>
+                <td><%= link_to 'Apagar', [ficha.professor,ficha], :confirm => 'Confirma?', :method => :delete, :class =>'botao3d' %></td>
+              <%end%>
             </tr>
           <%end%>
           <tr>

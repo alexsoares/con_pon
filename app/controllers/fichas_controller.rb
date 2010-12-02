@@ -40,7 +40,7 @@ layout 'ficha'
     @ficha.destroy
 
     respond_to do |format|
-      format.html { redirect_to fichas_url(@professor) }
+      format.html { redirect_to relatorio_ficha_path }
       format.xml  { head :ok }
     end
   end
