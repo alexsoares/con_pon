@@ -71,13 +71,17 @@ class CalculosController < ApplicationController
       @log.save!
 
       @existe = Trabalhado.find_all_by_professor_id(ficha.id, :conditions => ['ano_letivo = ?',$data])
-      @possui_ficha = Ficha.find_all_by_professor_id(ficha.id,:conditions =>['ano_letivo = ?',$data])
+      @possui_ficha = Ficha.find_by_professor_id(ficha.id,:conditions =>['ano_letivo = ?',$data])
       @contagem_finalizada = AcumTrab.find_all_by_professor_id(ficha.id, :conditions => ['status = 1'])
 
       if @contagem_finalizada.present?
         if !@possui_ficha.present?
+          @fichas = Ficha.new
+        else
+          @fichas = @possui_ficha
+        end
           if @existe.count == 2 then
-            @fichas = Ficha.new
+
               @fichas.professor_id = ficha.id
               @acum_trab_ficha = AcumTrab.find_by_professor_id(ficha.id)
               @fichas.acum_trab_id = @acum_trab_ficha.id
@@ -106,7 +110,6 @@ class CalculosController < ApplicationController
             @fichas.save
           end
         end
-      end
     end    
     @professor_com_ficha = Ficha.paginate(:all,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ?', $data])
     redirect_to(relatorio_ficha_path)
