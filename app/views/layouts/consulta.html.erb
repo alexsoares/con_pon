@@ -46,7 +46,7 @@ window.print();
             <td width="100%" align="right">
             <font size="4" color="green"><%= link_to h(current_user.login.capitalize), user_path(current_user) %> - <%= link_to 'Edit Profile', edit_user_path(current_user) %></font>
           <%else%>
-            <td><%= link_to '|Entrar|', login_path %></td>
+            <td><%= link_to '|Entrar|', professors_path %></td>
           <%end%>
           </div>
 <!-- FIM HEADER -->
