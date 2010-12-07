@@ -1,0 +1,1234 @@
+# Logfile created on Mon Dec 06 09:30:07 -0200 2010  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (25.8ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (4.6ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateProfessors (20090825165100)
+  [4;35;1mSQL (4.5ms)[0m   [0mCREATE TABLE `professors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `matricula` int(11) NOT NULL, `nome` varchar(255) NOT NULL, `dt_atual` datetime, `dt_ingresso` datetime, `dt_nasc` datetime, `RG` varchar(255) DEFAULT 0, `CPF` varchar(255) DEFAULT 0, `INEP` int(11) DEFAULT 0, `RD` int(11) DEFAULT 0, `n_filhos` int(11) DEFAULT 0, `sede_id` int(11) NOT NULL, `jornada_sem` int(11) DEFAULT 0, `funcao` varchar(255) NOT NULL, `endres` varchar(255), `complemento` varchar(255), `bairro` varchar(255), `num` int(11), `telefone` int(11), `cidade` varchar(255), `obs` varchar(255), `total_trabalhado` decimal(10,3) DEFAULT 0, `total_titulacao` decimal(10,3) DEFAULT 0, `pontuacao_final` decimal(10,3) DEFAULT 0, `flag` int(11), `sede_id_ant` int(11), `log_user` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (8.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090825165100')[0m
+Migrating to CreateTrabalhados (20090825165143)
+  [4;35;1mSQL (3.7ms)[0m   [0mCREATE TABLE `trabalhados` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `professor_id` int(11) NOT NULL, `ano` int(11) NOT NULL, `dias` int(11) DEFAULT 0, `unidade` int(11) DEFAULT 0, `outro_trab` int(11) DEFAULT 0, `f_abonada` int(11) DEFAULT 0, `atestado` int(11) DEFAULT 0, `f_justif` int(11) DEFAULT 0, `f_injustif` int(11) DEFAULT 0, `lic_saude` int(11) DEFAULT 0, `afastamento` int(11) DEFAULT 0, `dias_trab` int(11) DEFAULT 0, `dias_efetivos` int(11) DEFAULT 0, `dias_rede` int(11) DEFAULT 0, `dias_unidade` int(11) DEFAULT 0, `flag` tinyint(1) DEFAULT 0, `ano_letivo` int(11), `remocao` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090825165143')[0m
+Migrating to CreateTitulacaos (20090825165206)
+  [4;35;1mSQL (11.1ms)[0m   [0mCREATE TABLE `titulacaos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `tipo` varchar(255) NOT NULL, `descricao` varchar(255) NOT NULL, `referencia` varchar(255) NOT NULL, `valor` decimal(10,3) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mTitulacao Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `titulacaos`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTitulacao Create (0.3ms)[0m   [0;1mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('PERMANENTE', '2010-12-06 09:30:08', '2010-12-06 09:30:08', 1.0, 'SUPERIOR', 'CURSO')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTitulacao Create (0.3ms)[0m   [0mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('PERMANENTE', '2010-12-06 09:30:08', '2010-12-06 09:30:08', 2.0, 'CURSO DE POS-GRADUACAO LATO SENSU', 'CURSO')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTitulacao Create (0.2ms)[0m   [0;1mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('PERMANENTE', '2010-12-06 09:30:08', '2010-12-06 09:30:08', 3.0, 'MESTRADO', 'TITULO')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTitulacao Create (0.3ms)[0m   [0mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('PERMANENTE', '2010-12-06 09:30:08', '2010-12-06 09:30:08', 4.0, 'DOUTORADO', 'TITULO')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTitulacao Create (0.3ms)[0m   [0;1mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('PERMANENTE', '2010-12-06 09:30:08', '2010-12-06 09:30:08', 1.0, 'CURSO DE ESPECIALIZACAO / APERFEICOAMENTO (180H)', 'CURSO')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTitulacao Create (0.2ms)[0m   [0mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('ANUAL', '2010-12-06 09:30:08', '2010-12-06 09:30:08', 0.002, 'CURSOS OFER. / ACOMP. PELA SE - FORA DO TRABALHO', 'HORAS')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTitulacao Create (0.2ms)[0m   [0;1mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('ANUAL', '2010-12-06 09:30:08', '2010-12-06 09:30:08', 0.001, 'OUTROS CURSOS / SIMPOSIOS /ETC.', 'HORAS')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTitulacao Create (0.3ms)[0m   [0mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('ANUAL', '2010-12-06 09:30:08', '2010-12-06 09:30:08', 0.024, 'APRESENTACAO DE COMUNICACOES', 'COMUNICACOES')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090825165206')[0m
+Migrating to CreateTituloProfessors (20090911110231)
+  [4;36;1mSQL (3.7ms)[0m   [0;1mCREATE TABLE `titulo_professors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `titulo_id` int(11) NOT NULL, `professor_id` int(11) NOT NULL, `obs` varchar(255) NOT NULL, `quantidade` int(11) DEFAULT 0, `pontuacao_titulo` decimal(10,3) DEFAULT 0, `valor` decimal(10,3) DEFAULT 0, `dt_titulo` date, `dt_validade` date, `status` tinyint(1) DEFAULT 1, `validade` int(11) DEFAULT 0, `ano_letivo` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090911110231')[0m
+Migrating to CreateAcumTrabs (20090923114638)
+  [4;36;1mSQL (4.1ms)[0m   [0;1mCREATE TABLE `acum_trabs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `professor_id` int(11), `tot_acum_ant_trab` decimal(10,0) DEFAULT 0, `tot_acum_ant_efet` decimal(10,0) DEFAULT 0, `tot_acum_ant_rede` decimal(10,0) DEFAULT 0, `tot_acum_ant_unid` decimal(10,0) DEFAULT 0, `tot_acum_trab` decimal(10,0) DEFAULT 0, `tot_acum_efet` decimal(10,0) DEFAULT 0, `tot_acum_rede` decimal(10,0) DEFAULT 0, `tot_acum_unid` decimal(10,0) DEFAULT 0, `tot_geral_trab` decimal(10,3) DEFAULT 0, `tot_geral_efet` decimal(10,3) DEFAULT 0, `tot_geral_rede` decimal(10,3) DEFAULT 0, `tot_geral_unid` decimal(10,3) DEFAULT 0, `pont_base_trab` decimal(10,3) DEFAULT 0, `pont_base_efet` decimal(10,3) DEFAULT 0, `pont_base_rede` decimal(10,3) DEFAULT 0, `pont_base_unid` decimal(10,3) DEFAULT 0, `valor_trab` decimal(10,3) DEFAULT 0, `valor_efet` decimal(10,3) DEFAULT 0, `valor_rede` decimal(10,3) DEFAULT 0, `valor_unid` decimal(10,3) DEFAULT 0, `status` int(11) DEFAULT 0, `verifica` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090923114638')[0m
+Migrating to CreateUsers (20091020105052)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (3.3ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255), `email` varchar(255), `crypted_password` varchar(40), `salt` varchar(40), `created_at` datetime, `updated_at` datetime, `remember_token` varchar(255), `remember_token_expires_at` datetime, `activation_code` varchar(40), `activated_at` datetime, `regiao_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'administrador') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091020105052')[0m
+Migrating to CreateRoles (20091020145248)
+  [4;35;1mSQL (7.2ms)[0m   [0mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE `roles_users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `user_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (5.3ms)[0m   [0mCREATE INDEX `index_roles_users_on_role_id` ON `roles_users` (`role_id`)[0m
+  [4;36;1mSQL (5.6ms)[0m   [0;1mCREATE INDEX `index_roles_users_on_user_id` ON `roles_users` (`user_id`)[0m
+  [4;35;1mRole Columns (2.9ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRole Create (0.3ms)[0m   [0mINSERT INTO `roles` (`name`) VALUES('admin')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRole Create (0.2ms)[0m   [0;1mINSERT INTO `roles` (`name`) VALUES('supervisao')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRole Create (0.2ms)[0m   [0mINSERT INTO `roles` (`name`) VALUES('direcao')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRole Create (0.2ms)[0m   [0;1mINSERT INTO `roles` (`name`) VALUES('secretaria')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRole Create (0.2ms)[0m   [0mINSERT INTO `roles` (`name`) VALUES('planejamento')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mRolesUser Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRolesUser Create (0.3ms)[0m   [0mINSERT INTO `roles_users` (`role_id`, `user_id`) VALUES(1, 1)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091020145248')[0m
+Migrating to CreateUnidades (20091026132122)
+  [4;36;1mSQL (2.7ms)[0m   [0;1mCREATE TABLE `unidades` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `nome` varchar(255), `tipo` int(11), `regiao_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mUnidade Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.4ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(6, '2010-12-06 09:30:09', 'TEMPO DE VIVER', 1, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'ARAPIRANGA', 1, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'BITU', 1, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'MAIRA', 1, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'JURITI', 1, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'JACY', 1, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'ARACY', 1, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 09:30:09', 'CAIC', 1, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.3ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'GRAUNA', 2, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'ARAUNA', 2, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'CARANDA', 2, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'MANAI', 2, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.3ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'ARACATI', 2, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'CUNHATAI', 2, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 09:30:09', 'MARACA', 2, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 09:30:09', 'ANAJA', 2, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 09:30:09', 'CHUI', 2, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'MANACA', 3, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.3ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'POTIRA', 3, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'PATURI', 3, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'INDAIA', 3, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'BATUIRA', 3, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'JACINA', 3, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 09:30:09', 'CURIMA', 3, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 09:30:09', 'MAJOI', 3, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 09:30:09', 'TAPERA', 3, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'CURIO', 4, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.3ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'TARAGUA', 4, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'URUPE', 4, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'PATATIVA', 4, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (5.2ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'ARACARI', 4, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'CURUMIM', 4, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'TAHIRA', 5, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'BORE', 5, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'CECI', 5, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'CORIMBO', 5, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'TANGARA', 5, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'BACURI', 6, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 09:30:09', 'SABIA', 6, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'PITANGA', 7, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'PANAMBY', 7, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 09:30:09', 'CIEP ZANAGA', 4, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 09:30:09', 'CIEP SAO JERONIMO', 1, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 09:30:09', 'CIEP CIDADE JARDIM', 2, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 09:30:09', 'CIEP SAO VITO', 3, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 09:30:09', 'CIEP JAGUARI', 3, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.3ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 09:30:09', 'CIEP PRAIA AZUL', 7, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(4, '2010-12-06 09:30:09', 'CAIC', 1, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(4, '2010-12-06 09:30:09', 'EMEF PAULO FREIRE', 2, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(4, '2010-12-06 09:30:09', 'EMEF FLORESTAN FERNANDES', 6, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(4, '2010-12-06 09:30:09', 'EMEF DARCY RIBEIRO', 1, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 09:30:09', 'SEDUC', 1, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(7, '2010-12-06 09:30:09', 'SUPERVISAO', 22, '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(7, '2010-12-06 09:30:09', 'SEM SEDE', 22, '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091026132122')[0m
+Migrating to CreateRegiaos (20091026152004)
+  [4;35;1mSQL (3.6ms)[0m   [0mCREATE TABLE `regiaos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `nome` varchar(30), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mRegiao Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.3ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'SAO JERONIMO', '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'CIDADE JARDIM', '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.1ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'SAO VITO', '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.3ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'ZANAGA', '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'JARDIM IPIRANGA', '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'CENTRO', '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.1ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'JARDIM BRASIL', '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'PRAIA AZUL', '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'JARDIM DA PAZ ', '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.1ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'JARDIM DOS LIRIOS', '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'PARQUE DAS NACOES', '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'SAO ROQUE', '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.1ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'PARQUE GRAMADO', '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.1ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'JARDIM PROGRESSO', '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.1ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'PROFILURBE', '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'JARDIM LILASES', '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.1ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'PARQUE DA LIBERDADE ', '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'MATHIENSEN', '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'CORDENUCI', '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'JARDIM SAO PEDRO', '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'JARDIM SAO MANOEL', '2010-12-06 09:30:09')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.1ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 09:30:09', 'NAO ALOCADO', '2010-12-06 09:30:09')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091026152004')[0m
+Migrating to CreateSessions (20091110160722)
+  [4;36;1mSQL (2.6ms)[0m   [0;1mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (15.1ms)[0m   [0mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [4;36;1mSQL (5.2ms)[0m   [0;1mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091110160722')[0m
+Migrating to CreateVisaos (20091208174134)
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE `visaos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091208174134')[0m
+Migrating to CreateLogs (20100222110247)
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `obs` varchar(255), `data` varchar(255), `professor_id` int(11), `acumtrab_id` int(11), `remocao_id` int(11), `titulacao_id` int(11), `regiao_id` int(11), `unidade_id` int(11), `trabalhado_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100222110247')[0m
+Migrating to CreateMensagems (20100818170308)
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCREATE TABLE `mensagems` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `titulo` varchar(255), `from` varchar(255), `texto` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100818170308')[0m
+Migrating to AddLidoToMensagems (20100819181136)
+  [4;36;1mSQL (4.6ms)[0m   [0;1mALTER TABLE `mensagems` ADD `lido` tinyint(1)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100819181136')[0m
+Migrating to CreateFichas (20100827124131)
+  [4;36;1mSQL (2.3ms)[0m   [0;1mCREATE TABLE `fichas` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `professor_id` int(11), `acum_trab_id` int(11), `trabalhado_anterior_id` int(11), `trabalhado_atual_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100827124131')[0m
+Migrating to AddCamposToFichas (20100827130358)
+  [4;36;1mSQL (7.8ms)[0m   [0;1mALTER TABLE `fichas` ADD `total_geral` decimal(10,3) DEFAULT 0[0m
+  [4;35;1mSQL (5.5ms)[0m   [0mALTER TABLE `fichas` ADD `total_titulacao` decimal(10,3) DEFAULT 0[0m
+  [4;36;1mSQL (4.4ms)[0m   [0;1mALTER TABLE `fichas` ADD `total_trabalhado` decimal(10,3) DEFAULT 0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100827130358')[0m
+Migrating to AddAnoLetivoToFichas (20100827132201)
+  [4;36;1mSQL (5.2ms)[0m   [0;1mALTER TABLE `fichas` ADD `ano_letivo` int(11)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100827132201')[0m
+Migrating to AddLayoutToUsers (20100908171316)
+  [4;36;1mSQL (7.6ms)[0m   [0;1mALTER TABLE `users` ADD `layout` varchar(255) DEFAULT 'application'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100908171316')[0m
+Migrating to AddToResetcodToUsers (20100909151655)
+  [4;36;1mSQL (4.8ms)[0m   [0;1mALTER TABLE `users` ADD `password_reset_code` varchar(255)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100909151655')[0m
+Migrating to AddFieldsToFichas (20100910121936)
+  [4;36;1mSQL (5.3ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_acum_ant_trab` decimal(10,0) DEFAULT 0[0m
+  [4;35;1mSQL (5.7ms)[0m   [0mALTER TABLE `fichas` ADD `tot_acum_ant_efet` decimal(10,0) DEFAULT 0[0m
+  [4;36;1mSQL (4.6ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_acum_ant_rede` decimal(10,0) DEFAULT 0[0m
+  [4;35;1mSQL (5.9ms)[0m   [0mALTER TABLE `fichas` ADD `tot_acum_ant_unid` decimal(10,0) DEFAULT 0[0m
+  [4;36;1mSQL (4.8ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_acum_trab` decimal(10,0)[0m
+  [4;35;1mSQL (5.1ms)[0m   [0mALTER TABLE `fichas` ADD `tot_acum_efet` decimal(10,0)[0m
+  [4;36;1mSQL (5.4ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_acum_rede` decimal(10,0)[0m
+  [4;35;1mSQL (6.1ms)[0m   [0mALTER TABLE `fichas` ADD `tot_acum_unid` decimal(10,0)[0m
+  [4;36;1mSQL (5.2ms)[0m   [0;1mALTER TABLE `fichas` ADD `valor_trab` decimal(10,3)[0m
+  [4;35;1mSQL (9.7ms)[0m   [0mALTER TABLE `fichas` ADD `valor_efet` decimal(10,3)[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1mALTER TABLE `fichas` ADD `valor_rede` decimal(10,3)[0m
+  [4;35;1mSQL (6.2ms)[0m   [0mALTER TABLE `fichas` ADD `valor_unid` decimal(10,3)[0m
+  [4;36;1mSQL (5.7ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_geral_trab` decimal(10,3)[0m
+  [4;35;1mSQL (5.5ms)[0m   [0mALTER TABLE `fichas` ADD `tot_geral_efet` decimal(10,3)[0m
+  [4;36;1mSQL (7.1ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_geral_rede` decimal(10,3)[0m
+  [4;35;1mSQL (8.3ms)[0m   [0mALTER TABLE `fichas` ADD `tot_geral_unid` decimal(10,3)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100910121936')[0m
+Migrating to AddFieldparaToMensagems (20100910153252)
+  [4;35;1mSQL (5.6ms)[0m   [0mALTER TABLE `mensagems` ADD `para` int(11)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100910153252')[0m
+Migrating to AddFieldGeralToMensagems (20100910164105)
+  [4;35;1mSQL (5.4ms)[0m   [0mALTER TABLE `mensagems` ADD `geral` int(11) DEFAULT 0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100910164105')[0m
+Migrating to CreateAnnouncements (20100920125217)
+  [4;35;1mSQL (2.6ms)[0m   [0mCREATE TABLE `announcements` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `message` text, `starts_at` datetime, `ends_at` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100920125217')[0m
+Migrating to CreateCorrecaos (20101004180657)
+  [4;35;1mSQL (2.9ms)[0m   [0mCREATE TABLE `correcaos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `professor_id` int(11), `acum_trab_id` int(11), `valor_ant` decimal, `valor` decimal, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101004180657')[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSHOW FIELDS FROM `acum_trabs`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mdescribe `acum_trabs`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `acum_trabs`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `announcements`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `announcements`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `announcements`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `correcaos`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `correcaos`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `correcaos`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `fichas`[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mdescribe `fichas`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `fichas`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `logs`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `logs`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `logs`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `mensagems`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `mensagems`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `mensagems`[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mSHOW FIELDS FROM `professors`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mdescribe `professors`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `professors`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `regiaos`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `regiaos`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `regiaos`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `roles_users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `roles_users`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `sessions`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `sessions`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `titulacaos`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `titulacaos`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `titulacaos`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `titulo_professors`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `titulo_professors`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `titulo_professors`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `trabalhados`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `trabalhados`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `trabalhados`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `unidades`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `unidades`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `visaos`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `visaos`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `visaos`[0m
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:38
+./test/unit/titulo_professor_test.rb:1:in `require'
+./test/unit/titulo_professor_test.rb:1
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/unit/../test_helper.rb:38
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+./test/unit/user_test.rb:1
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load_without_new_constant_marking'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateProfessors (20090825165100)
+Migrating to CreateTrabalhados (20090825165143)
+Migrating to CreateTitulacaos (20090825165206)
+Migrating to CreateTituloProfessors (20090911110231)
+Migrating to CreateAcumTrabs (20090923114638)
+Migrating to CreateUsers (20091020105052)
+Migrating to CreateRoles (20091020145248)
+Migrating to CreateUnidades (20091026132122)
+Migrating to CreateRegiaos (20091026152004)
+Migrating to CreateRemocaos (20091028123541)
+  [4;36;1mSQL (7.5ms)[0m   [0;1mCREATE TABLE `remocaos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `professor_id` int(11), `ano_letivo` int(11), `remocao` tinyint(1), `valor_unid` decimal(10,3), `unidade_ant` int(11) DEFAULT 0 NOT NULL, `unidade_atual` int(11) DEFAULT 0 NOT NULL, `status` int(11) DEFAULT 0 NOT NULL, `unidade_id` int(11), `remocao_efetivada` tinyint(1), `tot_acum_unid` decimal(10,3), `flag_remocao_finalizada` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091028123541')[0m
+Migrating to CreateSessions (20091110160722)
+Migrating to CreateVisaos (20091208174134)
+Migrating to CreateLogs (20100222110247)
+Migrating to CreateMensagems (20100818170308)
+Migrating to AddLidoToMensagems (20100819181136)
+Migrating to CreateFichas (20100827124131)
+Migrating to AddCamposToFichas (20100827130358)
+Migrating to AddAnoLetivoToFichas (20100827132201)
+Migrating to AddLayoutToUsers (20100908171316)
+Migrating to AddToResetcodToUsers (20100909151655)
+Migrating to AddFieldsToFichas (20100910121936)
+Migrating to AddFieldparaToMensagems (20100910153252)
+Migrating to AddFieldGeralToMensagems (20100910164105)
+Migrating to CreateAnnouncements (20100920125217)
+Migrating to CreateCorrecaos (20101004180657)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mSHOW FIELDS FROM `acum_trabs`[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mdescribe `acum_trabs`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `acum_trabs`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `announcements`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `announcements`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `announcements`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `correcaos`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `correcaos`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `correcaos`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW FIELDS FROM `fichas`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mdescribe `fichas`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `fichas`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `logs`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `logs`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `logs`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `mensagems`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `mensagems`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `mensagems`[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mSHOW FIELDS FROM `professors`[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mdescribe `professors`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `professors`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `regiaos`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `regiaos`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `remocaos`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `remocaos`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `remocaos`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `roles_users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `roles_users`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `sessions`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `sessions`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `titulacaos`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `titulacaos`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `titulacaos`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `titulo_professors`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `titulo_professors`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `titulo_professors`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `trabalhados`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `trabalhados`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `trabalhados`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `unidades`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `unidades`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `visaos`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `visaos`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `visaos`[0m
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:38
+./test/unit/titulo_professor_test.rb:1:in `require'
+./test/unit/titulo_professor_test.rb:1
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/unit/../test_helper.rb:38
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+./test/unit/user_test.rb:1
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load_without_new_constant_marking'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (4.1ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (4.4ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateProfessors (20090825165100)
+  [4;35;1mSQL (4.8ms)[0m   [0mCREATE TABLE `professors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `matricula` int(11) NOT NULL, `nome` varchar(255) NOT NULL, `dt_atual` datetime, `dt_ingresso` datetime, `dt_nasc` datetime, `RG` varchar(255) DEFAULT 0, `CPF` varchar(255) DEFAULT 0, `INEP` int(11) DEFAULT 0, `RD` int(11) DEFAULT 0, `n_filhos` int(11) DEFAULT 0, `sede_id` int(11) NOT NULL, `jornada_sem` int(11) DEFAULT 0, `funcao` varchar(255) NOT NULL, `endres` varchar(255), `complemento` varchar(255), `bairro` varchar(255), `num` int(11), `telefone` int(11), `cidade` varchar(255), `obs` varchar(255), `total_trabalhado` decimal(10,3) DEFAULT 0, `total_titulacao` decimal(10,3) DEFAULT 0, `pontuacao_final` decimal(10,3) DEFAULT 0, `flag` int(11), `sede_id_ant` int(11), `log_user` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090825165100')[0m
+Migrating to CreateTrabalhados (20090825165143)
+  [4;35;1mSQL (6.7ms)[0m   [0mCREATE TABLE `trabalhados` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `professor_id` int(11) NOT NULL, `ano` int(11) NOT NULL, `dias` int(11) DEFAULT 0, `unidade` int(11) DEFAULT 0, `outro_trab` int(11) DEFAULT 0, `f_abonada` int(11) DEFAULT 0, `atestado` int(11) DEFAULT 0, `f_justif` int(11) DEFAULT 0, `f_injustif` int(11) DEFAULT 0, `lic_saude` int(11) DEFAULT 0, `afastamento` int(11) DEFAULT 0, `dias_trab` int(11) DEFAULT 0, `dias_efetivos` int(11) DEFAULT 0, `dias_rede` int(11) DEFAULT 0, `dias_unidade` int(11) DEFAULT 0, `flag` tinyint(1) DEFAULT 0, `ano_letivo` int(11), `remocao` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090825165143')[0m
+Migrating to CreateTitulacaos (20090825165206)
+  [4;35;1mSQL (3.3ms)[0m   [0mCREATE TABLE `titulacaos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `tipo` varchar(255) NOT NULL, `descricao` varchar(255) NOT NULL, `referencia` varchar(255) NOT NULL, `valor` decimal(10,3) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mTitulacao Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `titulacaos`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTitulacao Create (1.3ms)[0m   [0;1mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('PERMANENTE', '2010-12-06 11:00:37', '2010-12-06 11:00:37', 1.0, 'SUPERIOR', 'CURSO')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTitulacao Create (0.2ms)[0m   [0mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('PERMANENTE', '2010-12-06 11:00:37', '2010-12-06 11:00:37', 2.0, 'CURSO DE POS-GRADUACAO LATO SENSU', 'CURSO')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTitulacao Create (0.2ms)[0m   [0;1mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('PERMANENTE', '2010-12-06 11:00:37', '2010-12-06 11:00:37', 3.0, 'MESTRADO', 'TITULO')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTitulacao Create (0.2ms)[0m   [0mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('PERMANENTE', '2010-12-06 11:00:37', '2010-12-06 11:00:37', 4.0, 'DOUTORADO', 'TITULO')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTitulacao Create (0.3ms)[0m   [0;1mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('PERMANENTE', '2010-12-06 11:00:37', '2010-12-06 11:00:37', 1.0, 'CURSO DE ESPECIALIZACAO / APERFEICOAMENTO (180H)', 'CURSO')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTitulacao Create (0.2ms)[0m   [0mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('ANUAL', '2010-12-06 11:00:37', '2010-12-06 11:00:37', 0.002, 'CURSOS OFER. / ACOMP. PELA SE - FORA DO TRABALHO', 'HORAS')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTitulacao Create (0.2ms)[0m   [0;1mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('ANUAL', '2010-12-06 11:00:37', '2010-12-06 11:00:37', 0.001, 'OUTROS CURSOS / SIMPOSIOS /ETC.', 'HORAS')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTitulacao Create (0.2ms)[0m   [0mINSERT INTO `titulacaos` (`tipo`, `created_at`, `updated_at`, `valor`, `descricao`, `referencia`) VALUES('ANUAL', '2010-12-06 11:00:37', '2010-12-06 11:00:37', 0.024, 'APRESENTACAO DE COMUNICACOES', 'COMUNICACOES')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090825165206')[0m
+Migrating to CreateTituloProfessors (20090911110231)
+  [4;36;1mSQL (3.7ms)[0m   [0;1mCREATE TABLE `titulo_professors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `titulo_id` int(11) NOT NULL, `professor_id` int(11) NOT NULL, `obs` varchar(255) NOT NULL, `quantidade` int(11) DEFAULT 0, `pontuacao_titulo` decimal(10,3) DEFAULT 0, `valor` decimal(10,3) DEFAULT 0, `dt_titulo` date, `dt_validade` date, `status` tinyint(1) DEFAULT 1, `validade` int(11) DEFAULT 0, `ano_letivo` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090911110231')[0m
+Migrating to CreateAcumTrabs (20090923114638)
+  [4;36;1mSQL (3.8ms)[0m   [0;1mCREATE TABLE `acum_trabs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `professor_id` int(11), `tot_acum_ant_trab` decimal(10,0) DEFAULT 0, `tot_acum_ant_efet` decimal(10,0) DEFAULT 0, `tot_acum_ant_rede` decimal(10,0) DEFAULT 0, `tot_acum_ant_unid` decimal(10,0) DEFAULT 0, `tot_acum_trab` decimal(10,0) DEFAULT 0, `tot_acum_efet` decimal(10,0) DEFAULT 0, `tot_acum_rede` decimal(10,0) DEFAULT 0, `tot_acum_unid` decimal(10,0) DEFAULT 0, `tot_geral_trab` decimal(10,3) DEFAULT 0, `tot_geral_efet` decimal(10,3) DEFAULT 0, `tot_geral_rede` decimal(10,3) DEFAULT 0, `tot_geral_unid` decimal(10,3) DEFAULT 0, `pont_base_trab` decimal(10,3) DEFAULT 0, `pont_base_efet` decimal(10,3) DEFAULT 0, `pont_base_rede` decimal(10,3) DEFAULT 0, `pont_base_unid` decimal(10,3) DEFAULT 0, `valor_trab` decimal(10,3) DEFAULT 0, `valor_efet` decimal(10,3) DEFAULT 0, `valor_rede` decimal(10,3) DEFAULT 0, `valor_unid` decimal(10,3) DEFAULT 0, `status` int(11) DEFAULT 0, `verifica` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090923114638')[0m
+Migrating to CreateUsers (20091020105052)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (3.9ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255), `email` varchar(255), `crypted_password` varchar(40), `salt` varchar(40), `created_at` datetime, `updated_at` datetime, `remember_token` varchar(255), `remember_token_expires_at` datetime, `activation_code` varchar(40), `activated_at` datetime, `regiao_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'administrador') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091020105052')[0m
+Migrating to CreateRoles (20091020145248)
+  [4;35;1mSQL (5.8ms)[0m   [0mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (8.7ms)[0m   [0;1mCREATE TABLE `roles_users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `user_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (5.6ms)[0m   [0mCREATE INDEX `index_roles_users_on_role_id` ON `roles_users` (`role_id`)[0m
+  [4;36;1mSQL (6.1ms)[0m   [0;1mCREATE INDEX `index_roles_users_on_user_id` ON `roles_users` (`user_id`)[0m
+  [4;35;1mRole Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRole Create (0.3ms)[0m   [0mINSERT INTO `roles` (`name`) VALUES('admin')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRole Create (0.2ms)[0m   [0;1mINSERT INTO `roles` (`name`) VALUES('supervisao')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRole Create (1.2ms)[0m   [0mINSERT INTO `roles` (`name`) VALUES('direcao')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRole Create (0.2ms)[0m   [0;1mINSERT INTO `roles` (`name`) VALUES('secretaria')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRole Create (0.2ms)[0m   [0mINSERT INTO `roles` (`name`) VALUES('planejamento')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mRolesUser Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRolesUser Create (0.3ms)[0m   [0mINSERT INTO `roles_users` (`role_id`, `user_id`) VALUES(1, 1)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091020145248')[0m
+Migrating to CreateUnidades (20091026132122)
+  [4;36;1mSQL (2.6ms)[0m   [0;1mCREATE TABLE `unidades` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `nome` varchar(255), `tipo` int(11), `regiao_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mUnidade Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.5ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(6, '2010-12-06 11:00:37', 'TEMPO DE VIVER', 1, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.3ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'ARAPIRANGA', 1, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'BITU', 1, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.4ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'MAIRA', 1, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'JURITI', 1, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.3ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'JACY', 1, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'ARACY', 1, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 11:00:37', 'CAIC', 1, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'GRAUNA', 2, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'ARAUNA', 2, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'CARANDA', 2, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'MANAI', 2, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'ARACATI', 2, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'CUNHATAI', 2, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 11:00:37', 'MARACA', 2, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.3ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 11:00:37', 'ANAJA', 2, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 11:00:37', 'CHUI', 2, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.3ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'MANACA', 3, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.3ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'POTIRA', 3, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'PATURI', 3, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'INDAIA', 3, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'BATUIRA', 3, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'JACINA', 3, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 11:00:37', 'CURIMA', 3, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 11:00:37', 'MAJOI', 3, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(1, '2010-12-06 11:00:37', 'TAPERA', 3, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'CURIO', 4, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'TARAGUA', 4, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'URUPE', 4, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'PATATIVA', 4, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'ARACARI', 4, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'CURUMIM', 4, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'TAHIRA', 5, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'BORE', 5, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'CECI', 5, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'CORIMBO', 5, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'TANGARA', 5, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'BACURI', 6, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.3ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(2, '2010-12-06 11:00:37', 'SABIA', 6, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'PITANGA', 7, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'PANAMBY', 7, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 11:00:37', 'CIEP ZANAGA', 4, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 11:00:37', 'CIEP SAO JERONIMO', 1, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 11:00:37', 'CIEP CIDADE JARDIM', 2, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 11:00:37', 'CIEP SAO VITO', 3, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 11:00:37', 'CIEP JAGUARI', 3, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(5, '2010-12-06 11:00:37', 'CIEP PRAIA AZUL', 7, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(4, '2010-12-06 11:00:37', 'CAIC', 1, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(4, '2010-12-06 11:00:37', 'EMEF PAULO FREIRE', 2, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.3ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(4, '2010-12-06 11:00:37', 'EMEF FLORESTAN FERNANDES', 6, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(4, '2010-12-06 11:00:37', 'EMEF DARCY RIBEIRO', 1, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.2ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(3, '2010-12-06 11:00:37', 'SEDUC', 1, '2010-12-06 11:00:37')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.2ms)[0m   [0mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(7, '2010-12-06 11:00:37', 'SUPERVISAO', 22, '2010-12-06 11:00:37')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUnidade Create (0.7ms)[0m   [0;1mINSERT INTO `unidades` (`tipo`, `created_at`, `nome`, `regiao_id`, `updated_at`) VALUES(7, '2010-12-06 11:00:38', 'SEM SEDE', 22, '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (39.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091026132122')[0m
+Migrating to CreateRegiaos (20091026152004)
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE TABLE `regiaos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `nome` varchar(30), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mRegiao Columns (6.3ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.3ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'SAO JERONIMO', '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.3ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'CIDADE JARDIM', '2010-12-06 11:00:38')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'SAO VITO', '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'ZANAGA', '2010-12-06 11:00:38')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'JARDIM IPIRANGA', '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'CENTRO', '2010-12-06 11:00:38')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.3ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'JARDIM BRASIL', '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'PRAIA AZUL', '2010-12-06 11:00:38')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'JARDIM DA PAZ ', '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'JARDIM DOS LIRIOS', '2010-12-06 11:00:38')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'PARQUE DAS NACOES', '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'SAO ROQUE', '2010-12-06 11:00:38')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'PARQUE GRAMADO', '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'JARDIM PROGRESSO', '2010-12-06 11:00:38')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'PROFILURBE', '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'JARDIM LILASES', '2010-12-06 11:00:38')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'PARQUE DA LIBERDADE ', '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'MATHIENSEN', '2010-12-06 11:00:38')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.3ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'CORDENUCI', '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'JARDIM SAO PEDRO', '2010-12-06 11:00:38')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRegiao Create (0.2ms)[0m   [0;1mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'JARDIM SAO MANOEL', '2010-12-06 11:00:38')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRegiao Create (0.2ms)[0m   [0mINSERT INTO `regiaos` (`created_at`, `nome`, `updated_at`) VALUES('2010-12-06 11:00:38', 'NAO ALOCADO', '2010-12-06 11:00:38')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091026152004')[0m
+Migrating to CreateSessions (20091110160722)
+  [4;36;1mSQL (3.1ms)[0m   [0;1mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (11.1ms)[0m   [0mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [4;36;1mSQL (9.2ms)[0m   [0;1mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091110160722')[0m
+Migrating to CreateVisaos (20091208174134)
+  [4;36;1mSQL (6.4ms)[0m   [0;1mCREATE TABLE `visaos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091208174134')[0m
+Migrating to CreateLogs (20100222110247)
+  [4;36;1mSQL (12.4ms)[0m   [0;1mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `obs` varchar(255), `data` varchar(255), `professor_id` int(11), `acumtrab_id` int(11), `remocao_id` int(11), `titulacao_id` int(11), `regiao_id` int(11), `unidade_id` int(11), `trabalhado_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100222110247')[0m
+Migrating to CreateMensagems (20100818170308)
+  [4;36;1mSQL (10.1ms)[0m   [0;1mCREATE TABLE `mensagems` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `titulo` varchar(255), `from` varchar(255), `texto` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100818170308')[0m
+Migrating to AddLidoToMensagems (20100819181136)
+  [4;36;1mSQL (6.0ms)[0m   [0;1mALTER TABLE `mensagems` ADD `lido` tinyint(1)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100819181136')[0m
+Migrating to CreateFichas (20100827124131)
+  [4;36;1mSQL (2.7ms)[0m   [0;1mCREATE TABLE `fichas` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `professor_id` int(11), `acum_trab_id` int(11), `trabalhado_anterior_id` int(11), `trabalhado_atual_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100827124131')[0m
+Migrating to AddCamposToFichas (20100827130358)
+  [4;36;1mSQL (6.5ms)[0m   [0;1mALTER TABLE `fichas` ADD `total_geral` decimal(10,3) DEFAULT 0[0m
+  [4;35;1mSQL (6.4ms)[0m   [0mALTER TABLE `fichas` ADD `total_titulacao` decimal(10,3) DEFAULT 0[0m
+  [4;36;1mSQL (5.8ms)[0m   [0;1mALTER TABLE `fichas` ADD `total_trabalhado` decimal(10,3) DEFAULT 0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100827130358')[0m
+Migrating to AddAnoLetivoToFichas (20100827132201)
+  [4;36;1mSQL (5.4ms)[0m   [0;1mALTER TABLE `fichas` ADD `ano_letivo` int(11)[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100827132201')[0m
+Migrating to AddLayoutToUsers (20100908171316)
+  [4;36;1mSQL (5.6ms)[0m   [0;1mALTER TABLE `users` ADD `layout` varchar(255) DEFAULT 'application'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100908171316')[0m
+Migrating to AddToResetcodToUsers (20100909151655)
+  [4;36;1mSQL (6.5ms)[0m   [0;1mALTER TABLE `users` ADD `password_reset_code` varchar(255)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100909151655')[0m
+Migrating to AddFieldsToFichas (20100910121936)
+  [4;36;1mSQL (6.9ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_acum_ant_trab` decimal(10,0) DEFAULT 0[0m
+  [4;35;1mSQL (6.9ms)[0m   [0mALTER TABLE `fichas` ADD `tot_acum_ant_efet` decimal(10,0) DEFAULT 0[0m
+  [4;36;1mSQL (20.5ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_acum_ant_rede` decimal(10,0) DEFAULT 0[0m
+  [4;35;1mSQL (6.6ms)[0m   [0mALTER TABLE `fichas` ADD `tot_acum_ant_unid` decimal(10,0) DEFAULT 0[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_acum_trab` decimal(10,0)[0m
+  [4;35;1mSQL (10.3ms)[0m   [0mALTER TABLE `fichas` ADD `tot_acum_efet` decimal(10,0)[0m
+  [4;36;1mSQL (8.0ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_acum_rede` decimal(10,0)[0m
+  [4;35;1mSQL (10.1ms)[0m   [0mALTER TABLE `fichas` ADD `tot_acum_unid` decimal(10,0)[0m
+  [4;36;1mSQL (6.3ms)[0m   [0;1mALTER TABLE `fichas` ADD `valor_trab` decimal(10,3)[0m
+  [4;35;1mSQL (7.2ms)[0m   [0mALTER TABLE `fichas` ADD `valor_efet` decimal(10,3)[0m
+  [4;36;1mSQL (6.2ms)[0m   [0;1mALTER TABLE `fichas` ADD `valor_rede` decimal(10,3)[0m
+  [4;35;1mSQL (6.1ms)[0m   [0mALTER TABLE `fichas` ADD `valor_unid` decimal(10,3)[0m
+  [4;36;1mSQL (6.7ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_geral_trab` decimal(10,3)[0m
+  [4;35;1mSQL (6.5ms)[0m   [0mALTER TABLE `fichas` ADD `tot_geral_efet` decimal(10,3)[0m
+  [4;36;1mSQL (6.1ms)[0m   [0;1mALTER TABLE `fichas` ADD `tot_geral_rede` decimal(10,3)[0m
+  [4;35;1mSQL (6.5ms)[0m   [0mALTER TABLE `fichas` ADD `tot_geral_unid` decimal(10,3)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100910121936')[0m
+Migrating to AddFieldparaToMensagems (20100910153252)
+  [4;35;1mSQL (6.0ms)[0m   [0mALTER TABLE `mensagems` ADD `para` int(11)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100910153252')[0m
+Migrating to AddFieldGeralToMensagems (20100910164105)
+  [4;35;1mSQL (5.1ms)[0m   [0mALTER TABLE `mensagems` ADD `geral` int(11) DEFAULT 0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100910164105')[0m
+Migrating to CreateAnnouncements (20100920125217)
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE `announcements` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `message` text, `starts_at` datetime, `ends_at` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100920125217')[0m
+Migrating to CreateCorrecaos (20101004180657)
+  [4;35;1mSQL (3.0ms)[0m   [0mCREATE TABLE `correcaos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `professor_id` int(11), `acum_trab_id` int(11), `valor_ant` decimal, `valor` decimal, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101004180657')[0m
+Migrating to CreateRemocaos (20101028123541)
+  [4;35;1mSQL (3.6ms)[0m   [0mCREATE TABLE `remocaos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `professor_id` int(11), `ano_letivo` int(11), `remocao` tinyint(1), `valor_unid` decimal(10,3), `unidade_ant` int(11) DEFAULT 0 NOT NULL, `unidade_atual` int(11) DEFAULT 0 NOT NULL, `status` int(11) DEFAULT 0 NOT NULL, `unidade_id` int(11), `remocao_efetivada` tinyint(1), `tot_acum_unid` decimal(10,3), `flag_remocao_finalizada` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101028123541')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mSHOW FIELDS FROM `acum_trabs`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mdescribe `acum_trabs`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `acum_trabs`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `announcements`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `announcements`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `announcements`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `correcaos`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `correcaos`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `correcaos`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `fichas`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mdescribe `fichas`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `fichas`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `logs`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `logs`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `logs`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `mensagems`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `mensagems`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `mensagems`[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mSHOW FIELDS FROM `professors`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mdescribe `professors`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `professors`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `regiaos`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `regiaos`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `regiaos`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `remocaos`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `remocaos`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `remocaos`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `roles`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `roles`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mSQL (5.6ms)[0m   [0mdescribe `roles_users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `roles_users`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `titulacaos`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `titulacaos`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `titulacaos`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `titulo_professors`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `titulo_professors`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `titulo_professors`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `trabalhados`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `trabalhados`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `trabalhados`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `unidades`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `unidades`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `visaos`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `visaos`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `visaos`[0m
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:38
+./test/unit/titulo_professor_test.rb:1:in `require'
+./test/unit/titulo_professor_test.rb:1
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/unit/../test_helper.rb:38
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+./test/unit/user_test.rb:1
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load_without_new_constant_marking'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:38
+./test/unit/titulo_professor_test.rb:1:in `require'
+./test/unit/titulo_professor_test.rb:1
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/unit/../test_helper.rb:38
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+./test/unit/user_test.rb:1
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load_without_new_constant_marking'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:38
+./test/unit/titulo_professor_test.rb:1:in `require'
+./test/unit/titulo_professor_test.rb:1
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/unit/../test_helper.rb:38
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+./test/unit/user_test.rb:1
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load_without_new_constant_marking'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:38
+./test/unit/titulo_professor_test.rb:1:in `require'
+./test/unit/titulo_professor_test.rb:1
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+Unable to load role_user, underlying cause no such file to load -- role_user 
+
+ /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:265:in `require_or_load'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:224:in `depend_on'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:136:in `require_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `each'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/home/alexandre/consulta_pontuacao/vendor/rails/activerecord/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/unit/../test_helper.rb:38
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+./test/unit/user_test.rb:1
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load_without_new_constant_marking'
+/home/alexandre/consulta_pontuacao/vendor/rails/activesupport/lib/active_support/dependencies.rb:147:in `load'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m

@@ -21,9 +21,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
-  map.resource :session
+  map.resource :session, :as => "sessao", :path_names => {:new => "nova"}
 
-  map.resources :acum_trabs
+  map.resources :acum_trabs, :as => "acumulado", :path_names => {:new => "novo", :show => "exibir"}
 
   map.resources :titulo_professors, :collection => { :relatorio_prof_titulacao => :get, :relatorio_titulos_anuais_invalidos => :get, :relatorio_por_descricao_titulo => :get}
 
@@ -31,9 +31,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :servicos
 
-  map.resources :trabalhados
+  map.resources :trabalhados, :as => "tempo_de_servico", :path_names => {:new => "novo", :show => "exibir", :edit => "alterar"}
 
-  map.resources :professors, :has_many=>:fichas, :collection => { :gerar_ficha => :get, :status => :get, :to_print => :get, :check => :get, :esmiucar_tempo_servico => :get, :esmiucar_titulos => :get, :esmiucar_pontuacao => :get}
+  map.resources :professors, :as => "professores",:has_many=>:fichas, :collection => { :gerar_ficha => :get, :status => :get, :to_print => :get, :check => :get, :esmiucar_tempo_servico => :get, :esmiucar_titulos => :get, :esmiucar_pontuacao => :get}, :path_names => {:new => "novo"}
 
   map.resource :password
 
@@ -97,5 +97,5 @@ map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.ficha_automatica '/calculos/ficha_automatica', :controller => 'calculos', :action => 'ficha_automatica'
   map.relatorio_ficha '/calculos/relatorio_ficha', :controller => 'calculos', :action => 'relatorio_ficha'
   map.reset_password '/reset_password/:id', :controller => 'passwords', :action => 'edit'
-  map.home '/home', :controller => "home"
+  map.home '/home', :controller => "home", :as => "inicio"
 end
