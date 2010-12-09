@@ -1011,7 +1011,6 @@ end
         return # to avoid double render call
         }
     end
-
   end
 
   def check    
@@ -1028,6 +1027,10 @@ end
 
   def esmiucar_pontuacao
     @pontuacao = Professor.paginate(:all,:page=>params[:page],:per_page =>20, :conditions => "(total_trabalhado + total_titulacao) <> pontuacao_final")
+  end
+
+  def esmiucar_status
+    @status = AcumTrab.all(:joins =>:professor,:conditions => ['status = 0'], :order => 'professors.sede_id' )
   end
 
 private
