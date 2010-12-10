@@ -78,7 +78,7 @@
       <td width = "5%" align = "center"><%= $contador%></td>
       <td width = "4%"><center><%=h professor.matricula %></center></td>
       <td width = "38%"><center><%=h professor.nome %></center></td>
-      <td width = "25%"><center><%=h Unidade.find(professor.sede_id).nome%></center></td>
+      <td width = "25%"><center><%=h professor.unidade.nome%></center></td>
           <% if professor.pontuacao_final.nil? then %>
           <td width="5%"><%=h 0.000 %></td>
       <%else%>

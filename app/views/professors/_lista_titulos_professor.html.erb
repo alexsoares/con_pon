@@ -26,7 +26,7 @@
 
      <tr>
       <td align="center">
-        <%= Titulacao.find_by_id(tp.titulo_id).descricao %>
+        <%= tp.titulo.descricao %>
       </td>
       <td align="center">
         <%= tp.quantidade %>
@@ -76,7 +76,7 @@
      <tr>
       <td  align="center">
 
-        <%= Titulacao.find_by_id(tp1.titulo_id).descricao %>
+        <%= tp1.titulo.descricao %>
       </td>
       <td  align="center">
         <%= tp1.quantidade %>

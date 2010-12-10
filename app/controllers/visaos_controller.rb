@@ -28,7 +28,7 @@ class VisaosController < ApplicationController
     @search = Professor.search(params[:search])
     if !(params[:search].blank?)
         @search = Professor.search(params[:search])
-        @professor_rel_geral = @search.all(:joins => :unidade, :conditions => ["professors.funcao in ('ADI','Prof. de Creche','PEB1 - Ed. Infantil', 'Prof. Coordenador','Diretor Ed. Básica','Pedagogo')"], :order => 'pontuacao_final DESC')
+        @professor_rel_geral = @search.all(:include => :unidade, :conditions => ["professors.funcao in ('ADI','Prof. de Creche','PEB1 - Ed. Infantil', 'Prof. Coordenador','Diretor Ed. Básica','Pedagogo')"], :order => 'pontuacao_final DESC')
     end
   end
 
@@ -38,7 +38,7 @@ class VisaosController < ApplicationController
       @search = Professor.search(params[:search])
       if !(params[:search].blank?)
               @search = Professor.search(params[:search])
-              @professor_rel_geral = @search.all(:joins => :unidade, :conditions => ["professors.funcao in ('PEB1 - Ensino Fundamental','PEB2 - Artes','PEB2 - Inglês','PEB2 - Geografia','PEB2 - Ciências','PEB2 - Português','PEB2 - História','PEB2 - Matemática','PEB2 - Ed. Física','Diretor Ed. Básica','Pedagogo')"], :order => 'pontuacao_final DESC')
+              @professor_rel_geral = @search.all(:include => :unidade, :conditions => ["professors.funcao in ('PEB1 - Ensino Fundamental','PEB2 - Artes','PEB2 - Inglês','PEB2 - Geografia','PEB2 - Ciências','PEB2 - Português','PEB2 - História','PEB2 - Matemática','PEB2 - Ed. Física','Diretor Ed. Básica','Pedagogo')"], :order => 'pontuacao_final DESC')
       end
   end
 

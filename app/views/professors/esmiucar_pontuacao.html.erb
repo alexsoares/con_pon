@@ -1,5 +1,6 @@
 <table border="1" align="center" class="tabelas">
       <% @pontuacao.each do |check_professor| %>
+        <%@titulo_professor = TituloProfessor.check_titulos($data,check_professor.id)%>
           <tr>
             <th>
               Matricula
@@ -25,16 +26,16 @@
               <%= check_professor.matricula %>
             </td>
             <td>
-             <%= total_titulacao = TituloProfessor.check_titulos($data,check_professor.id).total_titulacao %>
+             <%= total_titulacao = @titulo_professor.total_titulacao %>
             </td>
             <td>
-             <%= total_trabalhado = TituloProfessor.check_titulos($data,check_professor.id).total_trabalhado %>
+             <%= total_trabalhado = @titulo_professor.total_trabalhado %>
             </td>
             <td>
              <%= total = total_trabalhado.to_d + total_titulacao.to_d %>
             </td>
             <td>
-              <%= pontuacao_final = (TituloProfessor.check_titulos($data,check_professor.id).pontuacao_final).to_d %>
+              <%= pontuacao_final = (@titulo_professor.pontuacao_final).to_d %>
             </td>
             <% if total == pontuacao_final %>
               <td>

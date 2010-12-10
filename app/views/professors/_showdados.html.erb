@@ -13,7 +13,7 @@
           <%= @verifica.dt_ingresso.strftime("%d/%m/%Y") %><br/>
         <%end%>
         <b>Sede :</b>
-        <%= Unidade.find(@verifica.sede_id).nome %><br/>
+        <%= @verifica.unidade.nome %><br/>
         <b>Endereço Res:</b>
         <%= @verifica.endres %><br/>
         <b>Numero:</b>

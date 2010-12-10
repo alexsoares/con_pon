@@ -20,7 +20,7 @@ display: none;
               <%=h professor.dt_ingresso.strftime("%d/%m/%y") %><br/>
             <%end%>
         <b>sede:</b>
-          <%=h Unidade.find(professor.sede_id).nome%><br/>
+          <%=h professor.unidade.nome%><br/>
         <b>Endereco:</b>
           <%=h professor.endres%>
         <b>No. </b>
