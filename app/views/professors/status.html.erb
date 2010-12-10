@@ -19,9 +19,9 @@
           <%= quantidade%><br/>
         </td>
         <% if quantidade == 0 %>
-          <td align="center"> <font color="blue"><%=  quantidade %></font> / <b><%= Professor.total(unidade) %></b></td>
+          <td align="center"> <font color="blue"><%= quantidade %></font> / <b><%= Professor.total(unidade) %></b></td>
         <%else%>
-          <td align="center"> <font color="red"><%=  quantidade %></font> / <%= Professor.total(unidade) %></td>
+          <td align="center"> <font color="red"><%= link_to quantidade, esmiucar_status_professors_path(:unidade => unidade) %></font> / <%= Professor.total(unidade) %></td>
         <%end%>
        </tr>
       <%end%>

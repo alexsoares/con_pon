@@ -1030,7 +1030,7 @@ end
   end
 
   def esmiucar_status
-    @status = AcumTrab.all(:joins =>:professor,:conditions => ['status = 0'], :order => 'professors.sede_id' )
+    @status = AcumTrab.all(:joins =>:professor,:conditions => ['status = 0 and professors.sede_id = ?', params[:unidade]], :order => 'professors.sede_id' )
   end
 
 private
