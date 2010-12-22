@@ -176,11 +176,11 @@ class RemocaosController < ApplicationController
   end
 
   def remocao_sim
-    render :partial => "relatorio_remocao"
+    
   end
 
   def lista_remocao
-    render :partial => "professores_remocao_cadastrada"
+    
   end
 
   def relato_remocao

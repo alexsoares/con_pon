@@ -27,7 +27,7 @@ class Unidade < ActiveRecord::Base
   end
 
 
-  def sede(id = nil)
+  def self.sede(id = nil)
     id ||= "Geral"
     find(id).nome
   end

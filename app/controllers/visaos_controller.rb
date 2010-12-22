@@ -47,7 +47,7 @@ class VisaosController < ApplicationController
       @search = Professor.search(params[:search])
       if !(params[:search].blank?)
               @search = Professor.search(params[:search])
-              @professor_rel_geral = @search.all(:joins => :unidade, :conditions => ["unidades.tipo in (1,2,3,4,5,6,7)"], :order => 'pontuacao_final DESC')
+              @professor_rel_geral = @search.all(:include => :unidade, :conditions => ["unidades.tipo in (1,2,3,4,5,6,7)"], :order => 'pontuacao_final DESC')
       end
   end
 
@@ -87,7 +87,7 @@ class VisaosController < ApplicationController
 
   def load_professors
     @unidades = Unidade.all
-    @professors = Professor.find(:all,:joins => :unidade, :conditions => ["unidades.tipo in (1,2,3)"], :order => "matricula")
+    @professors = Professor.find(:all,:include => :unidade, :conditions => ["unidades.tipo in (1,2,3)"], :order => "matricula")
   end
 
 

@@ -38,7 +38,7 @@
 <%if !(params[:search]).blank? %>
   <h1 align = "center" id="teste">RELATORIO DE PONTUACAO </h1>
   <% if params[:search][:sede_id_equals].present? %>
-    <% unidade = @unidades.sede(params[:search][:sede_id_equals]) %>
+    <% unidade = Unidade.sede(params[:search][:sede_id_equals]) %>
   <%else%>
   <% unidade = "Geral" %>
   <%end%>

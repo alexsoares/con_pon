@@ -163,10 +163,10 @@ helper_method :sort_column, :sort_direction
   $tipo_con = 10
   @professor_rel_geral = Professor.paginate(:all, :order => 'pontuacao_final DESC', :include => 'unidade',:page=>params[:page],:per_page =>20)
 
-    render :update do |page|
-      page.replace_html 'tempo', :text => ''
-      page.replace_html 'contents', :partial => 'relatorio_geral_pontuacao'
-    end
+#    render :update do |page|
+#      page.replace_html 'tempo', :text => ''
+#      page.replace_html 'contents', :partial => 'relatorio_geral_pontuacao'
+#    end
   end
 
 private

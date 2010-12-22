@@ -1,25 +1,25 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :correcaos, :collection => {:find_professor => :get}
 
-  map.resources :announcements
+  map.resources :announcements, :as => "anuncios"
     
   map.resources :mensagems, :collection => { :saida => :get, :entrada => :get, :message_read => :put, :lidas => :get,:message_unread => :put}
 
-  map.resource :consulta, :collection => {:consulta_titulo => :get, :consulta_ppu => :get}
+  map.resource :consulta, :collection => {:consulta_titulo => :get, :consulta_ppu => :get, :consulta_geral => :get}
 
   map.resources :logs
 
-  map.resources :visaos, :collection => {:fundamental => :get, :infantil => :get, :ambos => :get, :instrucao => :get}
+  map.resources :visaos, :as => "visualizacao",:collection => {:fundamental => :get, :infantil => :get, :ambos => :get, :instrucao => :get}
 
-  map.resources :remocaos
+  map.resources :remocaos, :collection => {:lista_remocao => :get, :remocao_sim => :get}
 
   map.resources :regiaos
 
   map.resources :unidades
 
-  map.resources :roles_users
+  map.resources :roles_users, :as => "papel_usuario"
 
-  map.resources :users
+  map.resources :users, :as => "usuarios"
 
   map.resource :session, :as => "sessao", :path_names => {:new => "nova"}
 

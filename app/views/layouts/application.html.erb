@@ -73,7 +73,7 @@ window.print();
                         <li><a href="#nogo29" class="fly">Pontuação</a>
                           <ul>
                             <li><%= link_to 'Status', status_professors_path%></li>
-                            <%if ((Time.current.strftime("%d/%m/%Y") < "01/12/2010") || (current_user.has_role?('planejamento'))) %>
+                            <%if ((Time.current.strftime("%d/%m/%Y") < "21/12/2010") || (current_user.has_role?('planejamento'))) %>
                               <li><%= link_to 'Tempo Serviço', new_trabalhado_path%></li>
                               <li><%= link_to 'Títulos',new_titulo_professor_path %></li>
                             <%end%>
@@ -87,7 +87,7 @@ window.print();
                                 <li><%= link_to 'Profº Individual', consulta_ppu_consulta_path%></li>
                                 <li><%= link_to_remote('Unidade', :url => {  :controller => "consultas", :action => "consulta_pu"}) %></li>
                                 <li><%= link_to 'Titulação', consulta_titulo_consulta_path %></li>
-                                <li><%= link_to_remote('Geral', :url => { :controller => "consultas", :action => "consulta_geral"}) %></li>
+                                <li><%= link_to 'Geral', consulta_geral_consulta_path %></li>
                               <%end%>
                             </ul>
                           </li>
@@ -97,9 +97,9 @@ window.print();
                             <ul>
                               <li><%= link_to 'Solicitar', new_remocao_path, {:title => 'Antes de Cadastrar a remocao de um professor, verifique na listagem ao lado se a mesma ja não esta criada'} %></li>
                               <% if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('planejamento') then%>
-                                <li><%= link_to_remote('Aguardando',:update => "contents", :url => { :controller => "remocaos",:action => "remocao_sim"}) %></li>
+                                <li><%= link_to 'Aguardando', remocao_sim_remocaos_path %></li>
                               <%end%>
-                              <li><%= link_to_remote('Solicitada',:update => "contents", :url => { :action => "lista_remocao"}) %></li>
+                              <li><%= link_to 'Solicitada',lista_remocao_remocaos_path %></li>
                               <%  if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('direcao') or current_user.has_role?('planejamento') then%>
                                 <li><%= link_to_remote('Ficha', :url => { :action => "relato_remocao"}) %></li>
                               <%end%>
