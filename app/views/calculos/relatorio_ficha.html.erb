@@ -1,24 +1,26 @@
-<div class="botao">
-  <div class="separator">
-    <table width="100%">
-      <% form_tag relatorio_ficha_path, :method => 'get' do %>
-        <p>
-          <tr>
-            <td align="right"> Matricula:
-              <%= text_field_tag :search, params[:search] %>
-              <%= submit_tag "Filtrar", :name => nil %>
-            </td>
-          </tr>
-        </p>
-      <% end %>
-    </table>
-  </div>
-</div>
+    <%  unless params[:year].nil? %>
+    <div class="botao">
+      <div class="separator">
+        <table width="100%">
+          <% form_tag relatorio_ficha_year_path, :method => 'get' do %>
+            <p>
+              <tr>
+                <td align="right"> Matricula:
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= hidden_field_tag(:year, params[:year]) %>
+                  <%= submit_tag "Filtrar", :name => nil%>
+                </td>
+              </tr>
+            </p>
+          <% end %>
+        </table>
+      </div>
+    </div>
 <br/>
 <br/>
 <br/>
 <br/>
-<h2 align="center">Professores que possuem fichas geradas para 2010</h2>
+<h2 align="center">Professores que possuem fichas geradas para <%= params[:year]%></h2>
 
      <table border="1" class="tabelas" align="center" rules="all" frame="box">
         <tr>
@@ -44,3 +46,15 @@
             </td>
           </tr>
     </table>
+    <%else%>
+     <table border="1" class="tabelas" align="center" rules="all" frame="box">
+        <tr>
+          <th colspan="2">Ano</th>
+        </tr>
+        <tr>
+          <% @list_year.each do |year| %>
+              <td><%= link_to year.ano_letivo, relatorio_ficha_path(:year => year.ano_letivo) %></td>
+          <%end%>
+        </tr>
+     </table>
+    <%end%>

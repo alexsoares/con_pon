@@ -12,21 +12,16 @@ include AuthenticatedSystem
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery  #:secret => 'f98d0606f1ae167a56aff4a76d8842f4'
-  
-  # See ActionController::Base for details 
+
+  # See ActionController::Base for details
   # Uncomment this to filter the contents of submitted sensitive data parameters
-  # from your application log (in this case, all fields with names like "password"). 
+  # from your application log (in this case, all fields with names like "password").
   # filter_parameter_logging :password
 
 
 end
 TIPO_TITULO = {'PERMANENTE' => 'PERMANENTE', 'ANUAL' => 'ANUAL', '5 ANOS' => '5 ANOS'}
 REFERENCIA = {'HORAS' => 'HORAS', 'COMUNICAÇÃO'=>'COMUNICAÇÃO','CURSO'=>'CURSO','TITULO'=>'TITULO'}
-$data = Time.current.strftime("%Y")
-$data2 = (($data).to_i - 1)
-ANO = {$data => $data, $data2 => $data2}
-$existe = 0
-$conta = 0
 SEDE = {'C. Cr. Arapiranga' => 'C. Cr. Arapiranga',
   'C. Cr. Araúna' => 'C. Cr. Araúna',
   'C. Cr. Bitu' => 'C. Cr. Bitu',
@@ -81,7 +76,7 @@ SEDE = {'C. Cr. Arapiranga' => 'C. Cr. Arapiranga',
 
 CARGO = {'Diretor Ed. Básica'=> 'Diretor Ed. Básica',
           'Prof. Coordenador'=>'Prof. Coordenador',
-          'Pedagogo'=> 'Pedagogo',
+          'Pedagogo'=> 'Pedadogo',
           'ADI'=>'ADI',
           'Prof. de Creche'=>'Prof. de Creche',
           'PEB1 - Ed. Infantil'=> 'PEB1 - Ed. Infantil',

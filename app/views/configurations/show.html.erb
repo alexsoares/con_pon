@@ -1,0 +1,13 @@
+<p>
+  <b>User:</b>
+  <%=h @configuration.user %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%=h @configuration.data %>
+</p>
+
+
+<%= link_to 'Edit', edit_configuration_path(@configuration) %> |
+<%= link_to 'Back', configurations_path %>

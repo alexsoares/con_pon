@@ -1,0 +1,31 @@
+<br/>
+<%= link_to 'Nova Config', new_configuration_path, :class => "botao3d" %>
+<br/>
+<br/>
+<div class="relatorios">
+  <table border="1" cellpadding="5" cellspacing="1" width="100%">
+    <tr>
+      <td colspan="6">
+        <h1 align="center">Configurações Ativas</h1>
+      </td>
+    </tr>
+    <tr>
+      <th>Usuário</th>
+      <th>Data vigente</th>
+      <th>Configurado em</th>
+    </tr>
+
+  <% @configurations.each do |configuration| %>
+    <tr>
+      <td align="center"><%=h configuration.user.login %></td>
+      <td align="center"><%=h configuration.data.strftime("%d/%m/%y") %></td>
+      <td align="center"><%=h configuration.created_at.strftime("%d/%m/%y %H:%M") %></td>
+      <td><%= link_to 'Exibir', configuration %></td>
+      <td><%= link_to 'Alterar', edit_configuration_path(configuration) %></td>
+      <td><%= link_to 'Apagar', configuration, :confirm => 'Confirma?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+<br />
+

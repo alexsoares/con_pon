@@ -1,6 +1,7 @@
 class CalculosController < ApplicationController
   before_filter :load_professors
   require_role "admin", :except => ['relatorio_ficha']
+  
 
   layout :define_layout
 
@@ -39,23 +40,25 @@ class CalculosController < ApplicationController
       end
     end
 
-    render :nothing => true
+    render :text => "Novo ano iniciado"
   end
 
   def iniciar_ano
   end
 
-
-  def arrumar_titulos    
+  def arrumar_titulos
+    
   end
 
   def efetiva_arrumar_titulos
-    @id_professor = Professor.all
-    for professor in @id_professor
-      titulos_anuais = TituloProfessor.sum('pontuacao_titulo', :conditions => ["professor_id = " +(professor.id).to_s + " and (titulo_id = 6 or titulo_id = 7 or titulo_id = 8)"])
-      @professor = Professor.find(professor.id)
-      @professor.total_titulacao= @professor.total_titulacao - titulos_anuais
-      @professor.save
+    unless (params[:ano].nil?)
+      @id_professor = Professor.all
+      for professor in @id_professor
+        titulos_anuais = TituloProfessor.sum('pontuacao_titulo', :conditions => ["professor_id = " +(professor.id).to_s + " and (titulo_id = 6 or titulo_id = 7 or titulo_id = 8) and ano_letivo = ?",params[:ano]])
+        @professor = Professor.find(professor.id)
+        @professor.total_titulacao= @professor.total_titulacao - titulos_anuais
+        @professor.save
+      end
     end
     render :action => 'arrumar_titulos'
   end
@@ -117,21 +120,26 @@ class CalculosController < ApplicationController
   end
   
   def relatorio_ficha
-
-    if params[:search].blank?
-      if current_user.regiao_id == 53 or current_user.regiao_id == 52 then
-        @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ?', $data])
+    @list_year = Ficha.ano
+    unless params[:year].nil?
+      if params[:search].blank?
+        if current_user.regiao_id == 53 or current_user.regiao_id == 52 then
+          @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ?', params[:year]])
+        else
+          @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ? and (professors.sede_id = ? or professors.sede_id = 54)', params[:year], current_user.regiao_id])
+        end
       else
-        @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ? and (professors.sede_id = ? or professors.sede_id = 54)', $data, current_user.regiao_id])
-      end
-    else
-      if current_user.regiao_id == 53 or current_user.regiao_id == 52 then
-        @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ? and professors.matricula = ?', $data,params[:search]])
-      else
-        @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ? and (professors.sede_id = ? or professors.sede_id = 54)  and professors.matricula = ?', $data, current_user.regiao_id,params[:search]])
+        if current_user.regiao_id == 53 or current_user.regiao_id == 52 then
+          @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ? and professors.matricula = ?', params[:year],params[:search]])
+        else
+          @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ? and (professors.sede_id = ? or professors.sede_id = 54)  and professors.matricula = ?', params[:year], current_user.regiao_id,params[:search]])
+        end
       end
 
     end
+  end
+
+  def relatorio_ficha_year
   end
 
   protected

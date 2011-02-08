@@ -14,7 +14,27 @@ class HomeController < ApplicationController
   end
 
   def index
+    configuration
   end
+
+  def configuration
+    @config = Configuration.find_by_user_id(current_user.id)
+    if @config.present?
+      $data = @config.data.strftime("%Y")
+      $data2 = (($data).to_i - 1)
+      $existe = 0
+      $conta = 0
+      flash[:notice] = "Ano Vigente: " + @config.data.strftime("%Y").to_s
+    else
+      $data = Time.current.strftime("%Y")
+      $data2 = (($data).to_i - 1)
+      $existe = 0
+      $conta = 0
+      flash[:notice] =  "Ano Vigente: Ano corrente"
+    end
+  end
+
+
   def login
     if !logged_in? then
       redirect_to(new_session_path)

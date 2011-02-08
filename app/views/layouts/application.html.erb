@@ -132,9 +132,13 @@ window.print();
                       <li><b>Gerencial</b></li>
                       <li><%= link_to 'Verificar Log', logs_path %></li>
                       <li><%= link_to 'Checar pontuação', check_professors_path %></li>
+                      <%  if (current_user.has_role?('admin') or current_user.has_role?('planejamento')) then%>
+                        <li><%= link_to 'Config Ano Letivo', configurations_path %></li>
+                      <%end%>
                       <%  if current_user.has_role?('admin') then%>
                         <li><%= link_to_remote('Usuários', :url => { :action => "gen_user", :controller => 'home'}) %></li>
                         <li><%= link_to 'Anuncios', announcements_path %></li>
+                        
                         <li><b>Anual</b></li>
                         <li><%= link_to('Novo Ano', iniciar_ano_path) %></li>
                         <li><%= link_to('Arrumar Titulos', arrumar_titulos_path) %></li>

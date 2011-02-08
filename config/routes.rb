@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :configurations
+
   map.resources :correcaos, :collection => {:find_professor => :get}
 
   map.resources :announcements, :as => "anuncios"
@@ -96,6 +98,7 @@ map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.iniciar_ano '/calculos/iniciar_ano', :controller => 'calculos', :action => 'iniciar_ano'
   map.ficha_automatica '/calculos/ficha_automatica', :controller => 'calculos', :action => 'ficha_automatica'
   map.relatorio_ficha '/calculos/relatorio_ficha', :controller => 'calculos', :action => 'relatorio_ficha'
+  map.relatorio_ficha_year '/calculos/relatorio_ficha_year', :controller => 'calculos', :action => 'relatorio_ficha_year'
   map.reset_password '/reset_password/:id', :controller => 'passwords', :action => 'edit'
   map.home '/home', :controller => "home", :as => "inicio"
 end

@@ -1,0 +1,15 @@
+<% form_for(@configuration) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :user_id,"Usuário" %>:
+    <%= f.collection_select(:user_id,User.all, :id,:login) %>
+  </p>
+  <p>
+    <%= f.label :data, "Data do Sistema" %>:
+    <%= f.date_select :data %>
+  </p>
+  <p>
+    <%= f.submit 'Salvar' %>
+  </p>
+<% end %>

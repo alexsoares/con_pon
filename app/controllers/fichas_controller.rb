@@ -1,11 +1,12 @@
 class FichasController < ApplicationController
-
+ 
 before_filter :load_professors
 require_role ["admin","planejamento"], :for => [:update,:destroy,:new,:create,:edit] # don't allow contractors to destroy
 layout 'ficha'
   # GET /fichas
   # GET /fichas.xml
   def index
+    
     @fichas = @professor.fichas.find(:all)
 
     respond_to do |format|
