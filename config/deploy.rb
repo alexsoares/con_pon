@@ -9,7 +9,7 @@ set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
 server application, :app, :web, :db, :primary => true
-
+after "deploy:update_code", "deploy:custom_symlinks"
  namespace :deploy do
    task :start do ; end
    task :stop do ; end
