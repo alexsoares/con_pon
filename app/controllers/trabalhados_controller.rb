@@ -4,6 +4,8 @@ class TrabalhadosController < ApplicationController
   before_filter :login_required
   before_filter :load_professors
   before_filter :professor_unidade
+  before_filter :ano
+
   require_role ["supervisao","admin","direcao","planejamento"], :for => [:destroy]
   layout :define_layout
 
@@ -427,6 +429,11 @@ protected
 
   def load_professors
     @professors = Professor.find(:all, :order => 'matricula')
+  end
+
+  def ano
+    @data_config = Configuration.find_by_user_id(current_user.id).data.strftime("%Y")
+    @ano = ["#{@data_config}", "#{((@data_config.to_i) -1)}"]
   end
 
 

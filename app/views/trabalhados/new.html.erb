@@ -41,7 +41,7 @@
     
      <tr>
         <td><%= f.label :ano, 'Ano:' %> </td>
-        <td>    <%= f.select :ano, (ANO), :include_blank => '' %>
+        <td>    <%= f.select :ano, @ano, :include_blank => '' %>
                 <%= observe_field 'trabalhado_ano',
                   :frequency => 0.5,
                   #:update => "professor_id",
