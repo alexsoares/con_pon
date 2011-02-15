@@ -183,7 +183,7 @@ font-size: large;
 #principal{
     float:right;
     height:980px;
-    width:830px;
+    width:820px;
     background-image:url(Imagens/body.jpg);
     background-color:gray;
     font-size:10px;
@@ -268,14 +268,6 @@ font-size: large;
         border-left: #FF8585 1px solid;
 
     }
-
-.corpo{
-    height:500px;
-    width:900px;
-    background-color:white;
-    font-size:10px;
-
-}
 #email1{
     height:400px;
     width:800px;
