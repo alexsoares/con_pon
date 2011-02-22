@@ -109,6 +109,7 @@ class TituloProfessorsController < ApplicationController
   def create
     @titulo_professor = TituloProfessor.new(params[:titulo_professor])
     @titulo_professor.user = current_user.id
+    @titulo_professor.current = Time.current
     @log = Log.new
     @log.log(current_user.id, @titulo_professor.professor_id, "Cadastrado Titulo do professor.")
 

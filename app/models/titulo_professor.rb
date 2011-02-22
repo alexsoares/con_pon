@@ -6,7 +6,7 @@ class TituloProfessor < ActiveRecord::Base
 
   belongs_to :professor
   belongs_to :titulo, :class_name => 'Titulacao', :foreign_key => "titulo_id"
-  attr_accessor :user
+  attr_accessor :user, :current
 
 
   before_save :verifica_valor_titulos
@@ -18,7 +18,11 @@ protected
 
 
   def existe_config
-    Configuration.find_by_user_id(self.user).data
+    unless Configuration.find_by_user_id(self.user).nil?
+      Configuration.find_by_user_id(self.user).data
+    else
+      self.current
+    end
   end
 
   def verify_qtd?
@@ -30,8 +34,6 @@ protected
   end
 
   def verifica_valor_titulos
-    teste = self.ano_letivo
-    
       self.obs.upcase!
       self.ano_letivo = existe_config.strftime("%Y")
       if self.titulo_id == 6

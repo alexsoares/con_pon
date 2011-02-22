@@ -1,4 +1,3 @@
-
 set :application, "187.35.111.69"
 set :repository, "git://github.com/alexsoares/con_pon.git"
 set :user, "servidor"
