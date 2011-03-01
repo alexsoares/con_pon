@@ -12,7 +12,5 @@
   <%=h @configuration.end_periods ? @configuration.end_periods.strftime("%d/%m/%Y") : "Não configurado" %>
 </p>
 
-
-
-<%= link_to 'Edit', edit_configuration_path(@configuration) %> |
-<%= link_to 'Back', configurations_path %>
+<%= link_to 'Alterar', edit_configuration_path(@configuration) %> |
+<%= link_to 'Voltar', configurations_path %>
