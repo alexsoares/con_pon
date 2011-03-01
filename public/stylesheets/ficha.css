@@ -8,8 +8,8 @@
 #principal{
     float:right;
     height:1250px;
-    width:950px;
-    background-color:#efebe8;
-    font-size:12px;
-    
+    width:820px;
+    background-image:url(Imagens/body.jpg);
+    background-color:gray;
+    font-size:10px;
 }

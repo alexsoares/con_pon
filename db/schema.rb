@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110207091838) do
+ActiveRecord::Schema.define(:version => 20110222110132) do
 
   create_table "acum_trabs", :force => true do |t|
     t.integer  "professor_id"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(:version => 20110207091838) do
     t.date     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "begin_period"
+    t.date     "end_periods"
   end
 
   create_table "correcaos", :force => true do |t|

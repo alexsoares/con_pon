@@ -1022,7 +1022,9 @@ end
   end
 
   def esmiucar_titulos
-    @titulo = Professor.paginate(:all,:page=>params[:page],:per_page =>20,:joins => :titulo_professors,:select => "professors.id,matricula,total_titulacao,titulo_professors.titulo_id, titulo_professors.ano_letivo,titulo_professors.pontuacao_titulo", :conditions => ["(titulo_professors.titulo_id in (1,2,3,4,5) or ( titulo_professors.ano_letivo = ? and titulo_professors.status = 1))",$data], :group => "matricula", :having => "professors.total_titulacao <> sum(titulo_professors.pontuacao_titulo)")
+    #@titulo = Professor.paginate(:all,:page=>params[:page],:per_page =>20,:joins => :titulo_professors,:select => "professors.id,professors.matricula,professors.total_titulacao,titulo_professors.titulo_id, titulo_professors.ano_letivo,titulo_professors.pontuacao_titulo", :conditions => ["(titulo_professors.titulo_id in (1,2,3,4,5) or ( titulo_professors.ano_letivo = ? and titulo_professors.status = 1))",$data], :group => "matricula", :having => "total_titulacao <> sum(titulo_professors.pontuacao_titulo)")
+    @titulo = Professor.paginate(:all,:page=>params[:page],:per_page =>20,:joins => :titulo_professors,:select => "professors.id,professors.matricula,professors.total_titulacao as total_titulacao,titulo_professors.titulo_id, titulo_professors.ano_letivo,titulo_professors.pontuacao_titulo", :conditions => ["(titulo_professors.titulo_id in (1,2,3,4,5) or ( titulo_professors.ano_letivo = ? and titulo_professors.status = 1))",$data], :group => "matricula,total_titulacao", :having => "total_titulacao <> sum(titulo_professors.pontuacao_titulo)")
+    teste = "r"
   end
 
   def esmiucar_pontuacao

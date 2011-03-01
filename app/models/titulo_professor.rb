@@ -6,7 +6,7 @@ class TituloProfessor < ActiveRecord::Base
 
   belongs_to :professor
   belongs_to :titulo, :class_name => 'Titulacao', :foreign_key => "titulo_id"
-  attr_accessor :user, :current
+  attr_accessor :user, :current, :begin_period, :end_period
 
 
   before_save :verifica_valor_titulos
@@ -18,8 +18,11 @@ protected
 
 
   def existe_config
-    unless Configuration.find_by_user_id(self.user).nil?
-      Configuration.find_by_user_id(self.user).data
+    @existe = Configuration.find_by_user_id(self.user)
+    if @existe.present?
+      unless (@existe.data).nil?
+        @existe.data
+      end
     else
       self.current
     end
@@ -48,18 +51,17 @@ protected
         @atualiza_professor.total_titulacao = @atualiza_professor.total_titulacao + self.pontuacao_titulo
         @atualiza_professor.save
       else
-        @dta = ((existe_config.strftime("%Y").to_i) - 1).to_s + "-11-01"
+        @dta = ((existe_config.strftime("%Y").to_i) - 1).to_s + self.begin_period.strftime("-%m-%d")
         if self.dt_titulo < @dta.to_date
           self.status = 0
         else
           if (self.titulo_id == 6) or (self.titulo_id == 7) or (self.titulo_id == 8)
            #self.dt_titulo = (DTA.strftime("%Y").to_i).to_s + "-06-30"
-           self.dt_validade = ((existe_config.strftime("%Y").to_i)).to_s + "-06-30"
+           self.dt_validade = ((existe_config.strftime("%Y").to_i)).to_s + self.end_period.strftime("-%m-%d")
            #self.dt_validade = "2010"
            self.pontuacao_titulo = self.quantidade * self.valor
-           teste = existe_config.strftime("%Y-%m-%d").to_date
-           teste1 = (existe_config.strftime("%Y").to_i - 1).to_s + "-11-01"
-           if (self.dt_titulo.to_s > existe_config.strftime("%Y").to_s + "-06-30") or (self.dt_titulo.to_s < (existe_config.strftime("%Y").to_i - 1).to_s + "-11-01")
+
+          if (self.dt_titulo.to_s > existe_config.strftime("%Y").to_s + self.end_period.strftime("-%m-%d")) or (self.dt_titulo.to_s < (existe_config.strftime("%Y").to_i - 1).to_s + self.begin_period.strftime("-%m-%d"))
              self.status = 0
            else
              @atualiza_professor.total_titulacao = @atualiza_professor.total_titulacao + self.pontuacao_titulo

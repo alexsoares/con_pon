@@ -432,8 +432,12 @@ protected
   end
 
   def ano
-    @data_config = Configuration.find_by_user_id(current_user.id).data.strftime("%Y")
-    @ano = ["#{@data_config}", "#{((@data_config.to_i) -1)}"]
+    unless Configuration.find_by_user_id(current_user.id).nil?
+      @data_config = Configuration.find_by_user_id(current_user.id).data.strftime("%Y")
+      @ano = ["#{@data_config}", "#{((@data_config.to_i) -1)}"]
+    else
+      @ano = [$data,$data2]
+    end
   end
 
 

@@ -1,8 +1,8 @@
-set :application, "192.168.0.247"
+set :application, "187.35.111.69"
 set :repository, "git://github.com/alexsoares/con_pon.git"
-set :user, "administrador"
+set :user, "servidor"
 set :use_sudo, false
-set :deploy_to, "/home/#{user}/consulta_pon"
+set :deploy_to, "/home/#{user}/pontuacao.seducpma.com"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
@@ -19,5 +19,6 @@ after "deploy:update_code", "deploy:custom_symlinks"
    task :custom_symlinks do
      run "rm -rf #{release_path}/config/database.yml"
      run "ln -s #{shared_path}/database.yml #{release_path}/config/database.yml"
+     run "ln -s #{shared_path}/503.html #{release_path}/public/503.html"
    end
  end

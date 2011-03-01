@@ -22,22 +22,24 @@ function Imprimir(){
 window.print();
 }
 </script>
-<div class="botao">
-<div id="alinha">
-<!-- HEADER -->
 
+
+    <div id="contents">
+      <div class="botao">
+      <div id="header">
+        <div id="topo">
+        </div>
+
+        <!-- HEADER -->
           <p style="color: red"><%= flash[:notice] %></p>
-          <div id="topo">
-          </div>
           <%if logged_in? then%>
             <td width="100%" align="right">
             <font size="4" color="green"><%= link_to h(current_user.login.capitalize), user_path(current_user) %> </font>
           <%else%>
             <td><%= link_to '|Entrar|', login_path %></td>
           <%end%>
-
-
-<!-- FIM HEADER -->
+        <!-- FIM HEADER -->
+      </div>
 <!-- MENU-->
             <span class="preload1"></span>
             <span class="preload2"></span>
@@ -64,7 +66,7 @@ window.print();
                           <li><%= link_to 'Gerar Ficha',gerar_ficha_professors_path %></li>
                        <%end%>
 
-                      
+
                         <li><a href="#nogo29" class="fly">Pontuação</a>
                         <ul>
                           <li><%= link_to 'Tempo Serviço', new_trabalhado_path%></li>
@@ -99,7 +101,7 @@ window.print();
                     <%end%>
                   </ul>
                 </li>
-                
+
                 <%  if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('planejamento') then%>
                   <li class="top"><a href="#nogo22" id="config" class="top_link"><span class="down">Configuração</span></a>
                     <ul class="sub">
@@ -114,7 +116,7 @@ window.print();
                     </ul>
                   </li>
                 <%end%>
-                
+
                 <li class="top"><a href="#nogo2" id="relatorios" class="top_link"><span class="down">Relatórios</span></a>
                 <ul class="sub">
                   <li><b>Professores por</b></li>
@@ -137,18 +139,14 @@ window.print();
               </li>
             </ul>
 <!-- FIM MENU -->
-</div>
-</div>
-    <div id="contents">
 
-      <div id="header">
-      </div>
       <div id="menu">
       </div>
       <div id="principal">
         <%= yield  %>
       </div>
     </div>
+  </div>
 </body>
 </html>
 

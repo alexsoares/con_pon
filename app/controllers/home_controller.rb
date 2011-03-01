@@ -20,17 +20,23 @@ class HomeController < ApplicationController
   def configuration
     @config = Configuration.find_by_user_id(current_user.id)
     if @config.present?
-      $data = @config.data.strftime("%Y")
-      $data2 = (($data).to_i - 1)
-      $existe = 0
-      $conta = 0
-      flash[:notice] = "Ano Vigente: " + @config.data.strftime("%Y").to_s
+      if @config.data
+        $data = @config.data.strftime("%Y")
+        $data2 = (($data).to_i - 1)
+        $existe = 0
+        $conta = 0
+        flash[:notice] = "Ano Vigente: " + @config.data.strftime("%Y").to_s
+      end
+      if @config.begin_period ? $begin_period = @config.begin_period : $begin_period = "-11-01"
+      end
+      if @config.end_periods ? $end_period = @config.end_periods : $end_period = "-06-30"
+      end
     else
-      $data = Time.current.strftime("%Y")
-      $data2 = (($data).to_i - 1)
-      $existe = 0
-      $conta = 0
-      flash[:notice] =  "Ano Vigente: Ano corrente"
+        $data = Time.current.strftime("%Y")
+        $data2 = (($data).to_i - 1)
+        $existe = 0
+        $conta = 0
+        flash[:notice] =  "Ano Vigente: Ano corrente"
     end
   end
 

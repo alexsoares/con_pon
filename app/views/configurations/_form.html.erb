@@ -6,9 +6,19 @@
     <%= f.collection_select(:user_id,User.all, :id,:login) %>
   </p>
   <p>
-    <%= f.label :data, "Data do Sistema" %>:
-    <%= f.date_select :data %>
+    <%= f.label :data, "Ano do Sistema" %>:
+    <%= f.date_select :data, :discard_day => true, :discard_month => true %>
   </p>
+  <p>
+    <%= f.check_box(:check_inicio) %> Configurar Data Letiva
+    <%= f.label :data, "Data de Inicio da contagem" %>:
+    <%= f.date_select :begin_period %>
+  </p>
+  <p>
+    <%= f.label :data, "Data de Inicio da contagem" %>:
+    <%= f.date_select :end_periods %>
+  </p>
+
   <p>
     <%= f.submit 'Salvar' %>
   </p>

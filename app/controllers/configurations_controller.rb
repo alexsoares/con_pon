@@ -2,8 +2,11 @@ class ConfigurationsController < ApplicationController
   # GET /configurations
   # GET /configurations.xml
   def index
-    @configurations = Configuration.all
-
+    if current_user.login == "administrador"
+      @configurations = Configuration.all
+    else
+      @configurations = Configuration.all(:conditions => ["user_id = ?", current_user])
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @configurations }

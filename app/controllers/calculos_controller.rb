@@ -32,15 +32,18 @@ class CalculosController < ApplicationController
     @inicia_ano = Professor.find(:all)
     for professor in @inicia_ano
       @acum_prof = AcumTrab.find_all_by_professor_id(professor.id)
+      professor.flag = 0
       for acum_prof in @acum_prof
         @acum_prof2 = AcumTrab.find(acum_prof.id)
         @acum_prof2.verifica = 2
         @acum_prof2.status = 0
         @acum_prof2.save
       end
+      professor.save
     end
-
-    render :text => "Novo ano iniciado"
+      render :update do |page|
+        page.replace_html 'inicia_ano', :text => "Novo ano iniciado"
+      end
   end
 
   def iniciar_ano
