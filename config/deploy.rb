@@ -20,5 +20,6 @@ after "deploy:update_code", "deploy:custom_symlinks"
      run "rm -rf #{release_path}/config/database.yml"
      run "ln -s #{shared_path}/database.yml #{release_path}/config/database.yml"
      run "ln -s #{shared_path}/503.html #{release_path}/public/503.html"
+     run "cd #{deploy_to}/current && /usr/bin/env rake db:migrate RAILS_ENV=production"
    end
  end
