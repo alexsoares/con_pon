@@ -99,7 +99,11 @@
           <%= contador_titulo_ok %>
         </td>
         <td>
+          <% if @titulo.present? %>
             <%= link_to contador_titulo_problemas, esmiucar_titulos_professors_path %>
+          <%else%>
+            <%= contador_problemas %>
+          <%end%>
         </td>
         <td>
           <%= contador_pontua_ok %>

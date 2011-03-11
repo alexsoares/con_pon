@@ -33,6 +33,7 @@ class CalculosController < ApplicationController
     for professor in @inicia_ano
       @acum_prof = AcumTrab.find_all_by_professor_id(professor.id)
       professor.flag = 0
+      professor.titulo_arrumado = 0
       for acum_prof in @acum_prof
         @acum_prof2 = AcumTrab.find(acum_prof.id)
         @acum_prof2.verifica = 2
@@ -46,12 +47,17 @@ class CalculosController < ApplicationController
       end
   end
 
+
   def iniciar_ano
   end
 
   def arrumar_titulos
-    
+    @titulos = TituloProfessor.find(:all, :conditions => ["(titulo_id = 6 or titulo_id = 7 or titulo_id = 8) and ano_letivo = ?",params[:ano]])
   end
+
+
+  #Flag titulo_arrumado no BD indica se a atualização para remover os titulos anuais ja foi realizada
+  #Tipo booleana
 
   def efetiva_arrumar_titulos
     unless (params[:ano].nil?)
@@ -59,12 +65,19 @@ class CalculosController < ApplicationController
       for professor in @id_professor
         titulos_anuais = TituloProfessor.sum('pontuacao_titulo', :conditions => ["professor_id = " +(professor.id).to_s + " and (titulo_id = 6 or titulo_id = 7 or titulo_id = 8) and ano_letivo = ?",params[:ano]])
         @professor = Professor.find(professor.id)
-        @professor.total_titulacao= @professor.total_titulacao - titulos_anuais
+        if @professor.titulo_arrumado == false
+          @professor.total_titulacao= @professor.total_titulacao - titulos_anuais
+          @professor.pontuacao_final = @professor.total_titulacao + @professor.total_trabalhado
+          @count = @count + 1
+        end
         @professor.save
       end
     end
-    render :action => 'arrumar_titulos'
+    render :partial => "success"
   end
+
+
+
 
   def ficha_automatica    
   end

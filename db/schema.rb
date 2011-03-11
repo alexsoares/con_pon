@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110222110132) do
+ActiveRecord::Schema.define(:version => 20110310132817) do
 
   create_table "acum_trabs", :force => true do |t|
     t.integer  "professor_id"
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20110222110132) do
     t.string   "log_user",         :limit => 30
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "titulo_arrumado"
   end
 
   create_table "regiaos", :force => true do |t|
