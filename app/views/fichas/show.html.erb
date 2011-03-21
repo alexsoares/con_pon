@@ -367,8 +367,6 @@
         <%=  'Não Valido' %>
         <%if @ficha.ano_letivo == ($data.to_i - 1)%>
           <% $subtot_um = $subtot_um + (tp1.pontuacao_titulo).to_f %>
-        <%else%>
-          <% $subtot_um = $subtot_um + 0 %>
         <%end%>
       <%end%>
       </td>
@@ -448,7 +446,7 @@
   <tr>
     <th colspan="12" align="left">TOTAL TITULOS</th>
     <th align="right" colspan="2">
-        <%= format("%.3f",$subtotal_titulos) %>
+        <%= @ficha.total_titulacao %>
      </th>
   </tr>
   <tr>
