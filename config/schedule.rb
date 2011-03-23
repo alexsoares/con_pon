@@ -17,7 +17,9 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every 1.day do
+
+
+every 1.day, :at => '0:30 am' do
   rake "backup:run"
 end
 
