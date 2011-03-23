@@ -9,7 +9,7 @@ namespace :backup do
 
   task :restore do
     `rsync -a --delete-excluded #{BACKUP_SERVER}/ #{SHARED_PATH}`
-    `gunzip < #{Dir.glob("#{DB_BACKUP_DIR}/*.sql.gz").sort.last} | mysql -u root imersaosysdeploy_production`
+    `gunzip < #{Dir.glob("#{DB_BACKUP_DIR}/*.sql.gz").sort.last} | mysql -uroot -ps3inf05 pontuacao_production`
   end
 
   task :database => :environment do
