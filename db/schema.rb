@@ -159,6 +159,39 @@ ActiveRecord::Schema.define(:version => 20110310132817) do
     t.boolean  "titulo_arrumado"
   end
 
+  create_table "professors2", :id => false, :force => true do |t|
+    t.integer  "id",                                                            :default => 0,   :null => false
+    t.integer  "matricula",                                                                      :null => false
+    t.string   "nome",                                                                           :null => false
+    t.datetime "dt_atual"
+    t.datetime "dt_ingresso"
+    t.datetime "dt_nasc"
+    t.string   "RG",               :limit => 20,                                :default => "0"
+    t.string   "CPF",              :limit => 20,                                :default => "0"
+    t.integer  "INEP",                                                          :default => 0
+    t.integer  "RD",                                                            :default => 0
+    t.integer  "n_filhos",                                                      :default => 0
+    t.integer  "sede_id",                                                                        :null => false
+    t.integer  "jornada_sem",                                                   :default => 0
+    t.string   "funcao",                                                                         :null => false
+    t.string   "endres"
+    t.string   "complemento"
+    t.string   "bairro"
+    t.integer  "num"
+    t.integer  "telefone"
+    t.string   "cidade"
+    t.string   "obs"
+    t.decimal  "total_trabalhado",               :precision => 10, :scale => 3, :default => 0.0
+    t.decimal  "total_titulacao",                :precision => 10, :scale => 3, :default => 0.0
+    t.decimal  "pontuacao_final",                :precision => 10, :scale => 3, :default => 0.0
+    t.integer  "flag",                                                          :default => 0,   :null => false
+    t.integer  "sede_id_ant"
+    t.string   "log_user",         :limit => 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "titulo_arrumado"
+  end
+
   create_table "regiaos", :force => true do |t|
     t.string   "nome",       :limit => 30
     t.datetime "created_at"
