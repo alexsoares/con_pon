@@ -1,6 +1,7 @@
 class ConfigurationsController < ApplicationController
   # GET /configurations
   # GET /configurations.xml
+  before_filter :login_required
   def index
     if current_user.login == "administrador"
       @configurations = Configuration.all

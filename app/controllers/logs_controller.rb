@@ -1,6 +1,7 @@
 class LogsController < ApplicationController
   # GET /logs
   # GET /logs.xml
+  before_filter :login_required
   before_filter :load_users
   layout :define_layout
 

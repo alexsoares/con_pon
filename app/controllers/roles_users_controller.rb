@@ -2,6 +2,7 @@ class RolesUsersController < ApplicationController
   require_role ["admin"]
   before_filter :load_user
   before_filter :load_role
+  before_filter :login_required
   # GET /role_users
   # GET /role_users.xml
   layout :define_layout
