@@ -158,6 +158,21 @@ class CalculosController < ApplicationController
   def relatorio_ficha_year
   end
 
+  def acertar_unidade
+    #p_u_c => Professores com Unidade Correta
+    #p_u_a => Professores com Unidade Antiga
+    @arruma_unidade = Professor.find_by_sql("SELECT p_u_c.id, p_u_c.matricula, p_u_c.sede_id as 'ser_corrigida',p_u_c.sede_id_ant, p_u_a.sede_id as 'unidades_corretas' FROM `professors` p_u_c inner join professors2 p_u_a on p_u_c.matricula=p_u_a.matricula where p_u_c.sede_id <> p_u_a.sede_id order by p_u_c.id")
+
+    @arruma_unidade.each do |a_u|
+      @professor = Professor.find(a_u)
+      @professor.id
+      @professor.sede_id = a_u.unidades_corretas
+      @professor.save
+    end
+
+  end
+
+
   protected
 
   def load_professors
