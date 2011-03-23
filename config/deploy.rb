@@ -22,4 +22,11 @@ after "deploy:update_code", "deploy:custom_symlinks"
      run "ln -s #{shared_path}/503.html #{release_path}/public/503.html"
      run "cd #{deploy_to}/current && /usr/bin/env rake db:migrate RAILS_ENV=production"
    end
+
+    desc "Update the crontab file"
+    task :update_crontab, :roles => :db do
+      run "cd #{release_path} && whenever --update-crontab #{application}"
+    end
+
+
  end
