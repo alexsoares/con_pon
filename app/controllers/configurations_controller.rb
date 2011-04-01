@@ -18,7 +18,7 @@ class ConfigurationsController < ApplicationController
   # GET /configurations/1.xml
   def show
     @configuration = Configuration.find(params[:id])
-
+    flash[:letivo] = "Ano Vigente: #{@configuration.data.strftime("%Y").to_s}"
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @configuration }
@@ -45,10 +45,11 @@ class ConfigurationsController < ApplicationController
   # POST /configurations.xml
   def create
     @configuration = Configuration.new(params[:configuration])
-
+    flash[:letivo] = "Ano Vigente: #{@configuration.data.strftime("%Y").to_s}"
+    @configuration.user_id = current_user
     respond_to do |format|
       if @configuration.save
-        flash[:notice] = 'Configuration was successfully created.'
+        flash[:notice] = 'Data base do Sistema configurada.'
         format.html { redirect_to(@configuration) }
         format.xml  { render :xml => @configuration, :status => :created, :location => @configuration }
       else
@@ -62,10 +63,10 @@ class ConfigurationsController < ApplicationController
   # PUT /configurations/1.xml
   def update
     @configuration = Configuration.find(params[:id])
-
+    flash[:letivo] = "Ano Vigente: #{@configuration.data.strftime("%Y").to_s}"
     respond_to do |format|
       if @configuration.update_attributes(params[:configuration])
-        flash[:notice] = 'Configuration was successfully updated.'
+        flash[:notice] = 'Data base do Sistema atualizada.'
         format.html { redirect_to(@configuration) }
         format.xml  { head :ok }
       else
@@ -80,7 +81,7 @@ class ConfigurationsController < ApplicationController
   def destroy
     @configuration = Configuration.find(params[:id])
     @configuration.destroy
-
+    session[:config_id] = nil
     respond_to do |format|
       format.html { redirect_to(configurations_url) }
       format.xml  { head :ok }

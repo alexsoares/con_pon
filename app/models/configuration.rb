@@ -3,7 +3,7 @@ class Configuration < ActiveRecord::Base
   belongs_to :user
   
   validates_uniqueness_of :user_id, :if => :ja_existe_config?, :message => ': Ja foi criado a configuração para este usuário. Favor edita-la'
-  before_create :tera_inicio
+  before_save :tera_inicio
 
 
 

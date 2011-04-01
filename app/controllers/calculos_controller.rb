@@ -1,7 +1,7 @@
 class CalculosController < ApplicationController
   before_filter :load_professors
   require_role "admin", :except => ['relatorio_ficha']
-  before_filter :login_require
+  #before_filter :login_require
 
   layout :define_layout
 
@@ -33,10 +33,12 @@ class CalculosController < ApplicationController
     for professor in @inicia_ano
       @acum_prof = AcumTrab.find_all_by_professor_id(professor.id)
       professor.flag = 0
+      # titulo_arrumado indica se já foi realizado o processo para invalidação dos titulos anuais
       professor.titulo_arrumado = 0
       for acum_prof in @acum_prof
         @acum_prof2 = AcumTrab.find(acum_prof.id)
         @acum_prof2.verifica = 2
+        #status indica se o calculo para a data foi realizado ou não.
         @acum_prof2.status = 0
         @acum_prof2.save
       end
@@ -52,7 +54,7 @@ class CalculosController < ApplicationController
   end
 
   def arrumar_titulos
-    @titulos = TituloProfessor.find(:all, :conditions => ["(titulo_id = 6 or titulo_id = 7 or titulo_id = 8) and ano_letivo = ?",params[:ano]])
+    @titulos = TituloProfessor.find(:all,:joins => :professor, :conditions => ["(titulo_id = 6 or titulo_id = 7 or titulo_id = 8) and ano_letivo = ? and professors.titulo_arrumado = 1",params[:ano]])
   end
 
 
@@ -60,6 +62,7 @@ class CalculosController < ApplicationController
   #Tipo booleana
 
   def efetiva_arrumar_titulos
+    @count = 0
     unless (params[:ano].nil?)
       @id_professor = Professor.all
       for professor in @id_professor
@@ -138,6 +141,7 @@ class CalculosController < ApplicationController
   def relatorio_ficha
     @list_year = Ficha.ano
     unless params[:year].nil?
+      #@verifica_existencia = Trabalhado.find_by_professor_id(@professor,:joins => "right join professors on trabalhados.professor_id=professors.id ", :conditions => ["ano_letivo = ? and created_at < '2010-01-01 00:00:00'", params[:year]])
       if params[:search].blank?
         if current_user.regiao_id == 53 or current_user.regiao_id == 52 then
           @professor_com_ficha = Ficha.paginate(:all,:joins => :professor,:page=>params[:page],:per_page =>25,:conditions => ['ano_letivo = ?', params[:year]])

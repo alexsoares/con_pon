@@ -1013,12 +1013,16 @@ end
     end
   end
 
-  def check    
-    @count_check = Professor.all(:joins => [:acum_trab], :conditions => ["acum_trabs.status = 1"])
+  def check
+    @count_check = Professor.all
+    #@count_check = Professor.all(:joins => [:acum_trab], :conditions => ["acum_trabs.status = 1"])
+    p=0
   end
 
   def esmiucar_tempo_servico
-   @tempo = Professor.paginate(:all,:page=>params[:page],:per_page =>20, :joins => [:acum_trab,:trabalhados], :conditions => ["trabalhados.ano_letivo = ? and acum_trabs.status = 1",$data], :select => "professors.id,sum(dias_trab) as soma_trab,sum(dias_efetivos) as soma_efet, sum(dias_rede) as soma_rede,sum(dias_unidade) as soma_unid,matricula, tot_acum_ant_trab, tot_acum_ant_efet, tot_acum_ant_rede, tot_acum_ant_unid, tot_acum_trab, tot_acum_efet, tot_acum_rede, tot_acum_unid", :group => 'matricula', :having => "(((sum(dias_trab) + tot_acum_ant_trab) <> tot_acum_trab) and ((sum(dias_efetivos) + tot_acum_ant_efet) <> tot_acum_efet) and ((sum(dias_rede) + tot_acum_ant_rede) <> tot_acum_rede) and ((sum(dias_unidade) + tot_acum_ant_unid) <> tot_acum_unid))" )
+#   @tempo = Professor.paginate(:all,:page=>params[:page],:per_page =>20, :joins => [:acum_trab,:trabalhados], :conditions => ["trabalhados.ano_letivo = ? and acum_trabs.status = 1",$data], :select => "professors.id,sum(dias_trab) as soma_trab,sum(dias_efetivos) as soma_efet, sum(dias_rede) as soma_rede,sum(dias_unidade) as soma_unid,matricula, tot_acum_ant_trab, tot_acum_ant_efet, tot_acum_ant_rede, tot_acum_ant_unid, tot_acum_trab, tot_acum_efet, tot_acum_rede, tot_acum_unid", :group => "matricula,tot_acum_ant_trab,tot_acum_ant_efet,tot_acum_ant_rede,tot_acum_ant_unid,tot_acum_trab,tot_acum_efet,tot_acum_rede,tot_acum_unid", :having => "(((sum(dias_trab) + tot_acum_ant_trab) <> tot_acum_trab) and ((sum(dias_efetivos) + tot_acum_ant_efet) <> tot_acum_efet) and ((sum(dias_rede) + tot_acum_ant_rede) <> tot_acum_rede) and ((sum(dias_unidade) + tot_acum_ant_unid) <> tot_acum_unid))" )
+   @tempo = Professor.paginate(:all,:page=>params[:page],:per_page =>20, :joins => [:acum_trab,:trabalhados], :conditions => ["trabalhados.ano_letivo = ?",$data], :select => "professors.id,sum(dias_trab) as soma_trab,sum(dias_efetivos) as soma_efet, sum(dias_rede) as soma_rede,sum(dias_unidade) as soma_unid,matricula, tot_acum_ant_trab, tot_acum_ant_efet, tot_acum_ant_rede, tot_acum_ant_unid, tot_acum_trab, tot_acum_efet, tot_acum_rede, tot_acum_unid", :group => "matricula,tot_acum_ant_trab,tot_acum_ant_efet,tot_acum_ant_rede,tot_acum_ant_unid,tot_acum_trab,tot_acum_efet,tot_acum_rede,tot_acum_unid", :having => "(((sum(dias_trab) + tot_acum_ant_trab) <> tot_acum_trab) and ((sum(dias_efetivos) + tot_acum_ant_efet) <> tot_acum_efet) and ((sum(dias_rede) + tot_acum_ant_rede) <> tot_acum_rede) and ((sum(dias_unidade) + tot_acum_ant_unid) <> tot_acum_unid))" )
+   
   end
 
   def esmiucar_titulos

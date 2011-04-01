@@ -36,7 +36,7 @@ helper_method :sort_column, :sort_direction
     $v = 1
     render :update do |page|
       page.replace_html 'tempo', :text => ''
-      page.replace_html 'contents', :partial => 'consultas'
+      page.replace_html 'principal', :partial => 'consultas'
     end
  end
 
@@ -131,7 +131,7 @@ helper_method :sort_column, :sort_direction
   $tipo_con = 4
   render :update do |page|
     page.replace_html 'tempo', :text => ''
-    page.replace_html 'contents', :partial => 'busca_titulacao'
+    page.replace_html 'principal', :partial => 'busca_titulacao'
   end
  end
 

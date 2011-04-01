@@ -10,7 +10,7 @@
       <% contador_pontua_ok =0 %>
       <% @pontuacao = Professor.find(:all, :conditions => "(total_trabalhado + total_titulacao) <> pontuacao_final") %>
       <% @titulo = Professor.find(:all,:joins => :titulo_professors,:select => "total_titulacao,titulo_professors.titulo_id, titulo_professors.ano_letivo,titulo_professors.pontuacao_titulo", :conditions => ["(titulo_professors.titulo_id in (1,2,3,4,5) or ( titulo_professors.ano_letivo = ? and titulo_professors.status = 1))",$data], :group => "matricula", :having => "professors.total_titulacao <> sum(titulo_professors.pontuacao_titulo)") %>
-      <% @tempo = Professor.find(:all, :joins => [:acum_trab,:trabalhados], :conditions => ["trabalhados.ano_letivo = ? and acum_trabs.status = 1",$data], :select => "sum(dias_trab) as soma_trab,sum(dias_efetivos) as soma_efet, sum(dias_rede) as soma_rede,sum(dias_unidade) as soma_unid,matricula, tot_acum_ant_trab, tot_acum_ant_efet, tot_acum_ant_rede, tot_acum_ant_unid, tot_acum_trab, tot_acum_efet, tot_acum_rede, tot_acum_unid", :group => 'matricula', :having => "(((sum(dias_trab) + tot_acum_ant_trab) <> tot_acum_trab) and ((sum(dias_efetivos) + tot_acum_ant_efet) <> tot_acum_efet) and ((sum(dias_rede) + tot_acum_ant_rede) <> tot_acum_rede) and ((sum(dias_unidade) + tot_acum_ant_unid) <> tot_acum_unid))" ) %>
+      <% @tempo = Professor.find(:all, :joins => [:acum_trab,:trabalhados], :conditions => ["trabalhados.ano_letivo = ?",$data], :select => "sum(dias_trab) as soma_trab,sum(dias_efetivos) as soma_efet, sum(dias_rede) as soma_rede,sum(dias_unidade) as soma_unid,matricula, tot_acum_ant_trab, tot_acum_ant_efet, tot_acum_ant_rede, tot_acum_ant_unid, tot_acum_trab, tot_acum_efet, tot_acum_rede, tot_acum_unid", :group => 'matricula', :having => "(((sum(dias_trab) + tot_acum_ant_trab) <> tot_acum_trab) and ((sum(dias_efetivos) + tot_acum_ant_efet) <> tot_acum_efet) and ((sum(dias_rede) + tot_acum_ant_rede) <> tot_acum_rede) and ((sum(dias_unidade) + tot_acum_ant_unid) <> tot_acum_unid))" ) %>
       <% @count_check.each do |check_professor| %>
         <%@check_titulos = TituloProfessor.check_titulos($data,check_professor.id)%>
         <%@check_acum = AcumTrab.acum(check_professor) %>
@@ -92,6 +92,7 @@
           <% if @tempo.present? %>
             <%= link_to contador_problemas, esmiucar_tempo_servico_professors_path %>
           <%else%>
+          
             <%= contador_problemas %>
           <%end%>
         </td>
@@ -102,7 +103,7 @@
           <% if @titulo.present? %>
             <%= link_to contador_titulo_problemas, esmiucar_titulos_professors_path %>
           <%else%>
-            <%= contador_problemas %>
+            <%= contador_titulo_problemas %>
           <%end%>
         </td>
         <td>

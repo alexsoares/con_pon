@@ -2,8 +2,7 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :user_id,"Usuário" %>:
-    <%= f.collection_select(:user_id,User.all, :id,:login) %>
+    <%= current_user.login %>    
   </p>
   <p>
     <%= f.label :data, "Ano do Sistema" %>:

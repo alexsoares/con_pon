@@ -25,7 +25,8 @@ class HomeController < ApplicationController
         $data2 = (($data).to_i - 1)
         $existe = 0
         $conta = 0
-        flash[:notice] = "Ano Vigente: " + @config.data.strftime("%Y").to_s
+        session[:config_id] = @config
+        flash[:letivo] = "Ano Vigente: #{@config.data.strftime("%Y").to_s}"
       end
       if @config.begin_period ? $begin_period = @config.begin_period : $begin_period = "-11-01"
       end

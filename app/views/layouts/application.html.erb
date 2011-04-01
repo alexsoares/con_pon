@@ -43,6 +43,9 @@ window.print();
         <%end%>
         <!-- HEADER -->
         <p style="color: red"><%= flash[:notice] %></p>
+        <%if session[:config_id].present?%>
+          <p style="color: blue"><%= link_to flash[:letivo],edit_configuration_path(session[:config_id]) %></p>
+        <%end%>
        <div id="linha">
          <%if logged_in? then%>
            <td width="100%" align="right">
