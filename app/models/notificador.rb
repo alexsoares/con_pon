@@ -9,7 +9,11 @@ class Notificador < ActionMailer::Base
   def forgot_password(user)
 		setup_email(user)
 		@subject    += 'Você solicitou a mudança da sua senha'
-		@body[:url]  = "http://localhost:3000/reset_password/#{user.password_reset_code}"
+		if RAILS_ENV == "production"
+      @body[:url]  = "http://pontuacao.seducpma.com/reset_password/#{user.password_reset_code}"
+    else
+      @body[:url]  = "http://localhost:3001/reset_password/#{user.password_reset_code}"
+    end
 	end
 
   protected

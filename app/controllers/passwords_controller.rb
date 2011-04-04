@@ -1,6 +1,6 @@
 class PasswordsController < ApplicationController
   before_filter :login_required
-  skip_before_filter :login_required, :only => [:new, :create]
+  skip_before_filter :login_required, :only => [:new, :create,:edit,:update]
   layout 'login'
   def new
   end
