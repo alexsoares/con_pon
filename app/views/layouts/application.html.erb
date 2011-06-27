@@ -81,10 +81,10 @@ window.print();
           <li><a href="#nogo29" class="fly">Pontuação</a>
             <ul>
               <li><%= link_to 'Status', status_professors_path%></li>
-              <%if ((Time.current.strftime("%d/%m/%Y") < "21/12/2010") || (current_user.has_role?('planejamento'))) %>
+
                 <li><%= link_to 'Tempo Serviço', new_trabalhado_path%></li>
                 <li><%= link_to 'Títulos',new_titulo_professor_path %></li>
-              <%end%>
+
               <li><%= link_to_remote('Pontuação', :url => { :action => "relato_prof", :controller => "professors"}) %></li>
             </ul>
          </li>
@@ -178,13 +178,14 @@ window.print();
       </ul>
      </li>
     </ul>
+    </div>
     <!-- FIM MENU -->
       <div id="menu">
       </div>
       <div id="principal">
         <%= yield  %>
       </div>
-    </div>
+    
 </div>
 </body>
 </html>

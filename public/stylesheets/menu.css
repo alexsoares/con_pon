@@ -71,6 +71,6 @@ way to fit your requirements.
 #nav li:hover > ul ul
 {position:absolute; left:-9999px; top:-9999px; width:0; height:0; margin:0; padding:0; list-style:none;}
 #nav li:hover li:hover > a.fly
-{background:#3f96a9 url(Imagens/menu/arrow_over.gif) 80px 6px no-repeat; color:#fff; border-color:#fff;}
+{background:blue url(Imagens/menu/arrow_over.gif) 80px 6px no-repeat; color:#fff; border-color:#fff;}
 #nav li:hover li:hover > li a.fly
 {background:#356998 url(Imagens/menu/arrow.gif) 80px 6px no-repeat; color:#000; border-color:#356998;}

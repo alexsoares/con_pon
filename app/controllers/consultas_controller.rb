@@ -46,13 +46,13 @@ helper_method :sort_column, :sort_direction
       $sede= 'TODAS UNIDADES'
     else
       @professors = Professor.find_all_by_sede_id($sede)
-      @professors = Professor.paginate(:all,:conditions => ['sede_id = ?',$sede],:page=>params[:page],:per_page =>20)
+      @professors = Professor.paginate(:all,:conditions => ['sede_id = ?',$sede],:page=>params[:page],:per_page =>30)
       $professor = Professor.find_all_by_sede_id($sede).object_id
 
     end
   if $tipo_con == 1 then
    if $sede == 'TODAS UNIDADES' then
-      @professorsnome = Professor.paginate(:all, :order => 'nome',:page=>params[:page],:per_page =>20)
+      @professorsnome = Professor.paginate(:all, :order => 'nome',:page=>params[:page],:per_page =>30)
     else
      if $sede == 'SELECIONE' then
        @professorsnome = ''
@@ -72,7 +72,7 @@ helper_method :sort_column, :sort_direction
      if $sede == 'SELECIONE' then
        @professorsnome = ''
      else
-      @professorsnome = Professor.paginate(:all,:conditions => ['sede_id = ?',$sede], :order => 'pontuacao_final DESC',:page=>params[:page],:per_page =>20)
+      @professorsnome = Professor.paginate(:all,:conditions => ['sede_id = ?',$sede], :order => 'pontuacao_final DESC',:page=>params[:page],:per_page =>30)
      end
     end
 
@@ -85,12 +85,12 @@ helper_method :sort_column, :sort_direction
    else
    if $tipo_con == 4 then
    if $sede == 'TODAS UNIDADES' then
-      @professorsnome = Professor.paginate(:all, :order => 'nome',:page=>params[:page],:per_page =>20)
+      @professorsnome = Professor.paginate(:all, :order => 'nome',:page=>params[:page],:per_page =>30)
     else
      if $sede == 'SELECIONE' then
        @professorsnome = ''
      else
-        @professorsnome = Professor.paginate(:all,:conditions => ['sede_id = ?',$sede], :order => 'nome',:page=>params[:page],:per_page =>20)
+        @professorsnome = Professor.paginate(:all,:conditions => ['sede_id = ?',$sede], :order => 'nome',:page=>params[:page],:per_page =>30)
      end
     end
       render :update do |page|
