@@ -1,3 +1,7 @@
+    <script type="text/javascript" src="/javascripts/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui-1.8.6.custom.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui-timepicker-addon.js"></script>
+
 <h1>Editing titulo_professor</h1>
 
 <% form_for(@titulo_professor) do |f| %>
@@ -32,7 +36,7 @@
      </tr>
      <tr>
        <td><%= f.label :dt_titulo, 'Data de Emissão:' %>
-       <td><%= f.date_select :dt_titulo, :order => [:day, :month, :year] %></td>
+       <td><%= f.text_field(:dt_titulo, :id => "dt_titulo", :size => 10) %></td>
     </tr>
 
   </table>

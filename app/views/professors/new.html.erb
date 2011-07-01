@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <td><%= f.label :dt_ingresso, 'Data Ingresso:' %></td>
-        <td><%= f.date_select(:dt_ingresso, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 50)) %></td>
+        <td><%= f.text_field(:dt_ingresso, :id => 'dt_ingresso',:size =>10) %></td>
       </tr>
       <tr>
 
@@ -123,3 +123,5 @@
  <br/>
   <%= link_to 'Voltar', professors_path,:class => 'botao3d' %>
 </div>
+
+

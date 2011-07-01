@@ -1,3 +1,4 @@
+
 <div id="conteudo">
   <br/>
   <h1 align="center">Cadastro dos Títulos dos Professores</h1>
@@ -53,7 +54,7 @@
      </tr>
      <tr>
        <td><%= f.label :dt_titulo, 'Data de Emissão:' %>
-       <td><%= f.date_select(:dt_titulo, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 50)) %></td>
+       <td><%= f.text_field(:dt_titulo, :id => "dt_titulo", :size => 10) %></td>
     </tr>
     
     <td>

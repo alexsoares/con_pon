@@ -1,8 +1,8 @@
-set :application, "187.35.111.69"
+set :application, "192.168.0.247"
 set :repository, "git://github.com/alexsoares/con_pon.git"
-set :user, "servidor"
+set :user, "administrador"
 set :use_sudo, false
-set :deploy_to, "/home/#{user}/pontuacao.seducpma.com"
+set :deploy_to, "/home/#{user}/consulta_pon"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
@@ -19,14 +19,5 @@ after "deploy:update_code", "deploy:custom_symlinks"
    task :custom_symlinks do
      run "rm -rf #{release_path}/config/database.yml"
      run "ln -s #{shared_path}/database.yml #{release_path}/config/database.yml"
-     run "ln -s #{shared_path}/503.html #{release_path}/public/503.html"
-     run "cd #{deploy_to}/current && /usr/bin/env rake db:migrate RAILS_ENV=production"
    end
-
-    desc "Update the crontab file"
-    task :update_crontab, :roles => :db do
-      run "cd #{release_path} && whenever --update-crontab #{application}"
-    end
-
-
  end

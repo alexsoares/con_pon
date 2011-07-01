@@ -111,8 +111,8 @@ class TituloProfessorsController < ApplicationController
     @titulo_professor = TituloProfessor.new(params[:titulo_professor])
     @titulo_professor.user = current_user.id
     @titulo_professor.current = Time.current
-    @titulo_professor.begin_period = $begin_period
-    @titulo_professor.end_period = $end_period
+    @titulo_professor.begin_period = session[:begin_period]
+    @titulo_professor.end_period = session[:end_period]
     @log = Log.new
     @log.log(current_user.id, @titulo_professor.professor_id, "Cadastrado Titulo do professor.")
 

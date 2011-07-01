@@ -4,7 +4,9 @@
 <% $subtotal_titulos = 0 %>
 <%$numero = 0%>
 <div id="separator">
-  <p align="center"><%= link_to "Voltar", relatorio_ficha_path %></p> 
+  <div class="botao">
+    <p align="center"><%= link_to "Voltar", relatorio_ficha_path %></p>
+  </div>
 </div>
 <div id="ficha2">
 <%if !(@ficha.nil?) %>
@@ -216,7 +218,11 @@
         <%  $exibe_ano_atual_dias_unid = ano_atual.dias_unidade%>
 
     <%pontuacao = AcumTrab.find(@ficha.acum_trab)%>
+      <%if @ficha.created_at.strftime("%Y").to_i < Time.current.strftime("%Y").to_i %>
+        <%$exibe_pont_trab = pontuacao.pont_base_trab / 2%>
+      <%else%>
         <%$exibe_pont_trab = pontuacao.pont_base_trab%>
+      <%end%>
         <%$exibe_pont_efet = pontuacao.pont_base_efet%>
         <%$exibe_pont_rede = pontuacao.pont_base_rede%>
         <%$exibe_pont_unid = pontuacao.pont_base_unid%>

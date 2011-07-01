@@ -86,7 +86,7 @@ Rails::Initializer.run do |config|
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
-config.i18n.default_locale = "pt-br"
+config.i18n.default_locale = "pt-br.yml"
 
 end
 require 'smtp_tls'

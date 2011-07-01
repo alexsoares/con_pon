@@ -33,6 +33,7 @@ protected
       if self.quantidade < 30
         errors.add(:tipo_curso, 'Curso à distancia somente acima de 30 hrs de duração')
       end
+
     end
   end
 
@@ -59,7 +60,11 @@ protected
            #self.dt_titulo = (DTA.strftime("%Y").to_i).to_s + "-06-30"
            self.dt_validade = ((existe_config.strftime("%Y").to_i)).to_s + self.end_period.strftime("-%m-%d")
            #self.dt_validade = "2010"
-           self.pontuacao_titulo = self.quantidade * self.valor
+           if self.quantidade > 180
+             self.pontuacao_titulo = 180 * self.valor
+           else
+            self.pontuacao_titulo = self.quantidade * self.valor
+           end
 
           if (self.dt_titulo.to_s > existe_config.strftime("%Y").to_s + self.end_period.strftime("-%m-%d")) or (self.dt_titulo.to_s < (existe_config.strftime("%Y").to_i - 1).to_s + self.begin_period.strftime("-%m-%d"))
              self.status = 0

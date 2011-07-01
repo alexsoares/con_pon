@@ -28,9 +28,9 @@ class HomeController < ApplicationController
         session[:config_id] = @config
         flash[:letivo] = "Ano Vigente: #{@config.data.strftime("%Y").to_s}"
       end
-      if @config.begin_period ? $begin_period = @config.begin_period : $begin_period = "-11-01"
+      if @config.begin_period ? session[:begin_period] = @config.begin_period : session[:begin_period] = "-11-01"
       end
-      if @config.end_periods ? $end_period = @config.end_periods : $end_period = "-06-30"
+      if @config.end_periods ? session[:end_period] = @config.end_periods : session[:end_period] = "-06-30"
       end
     else
         $data = Time.current.strftime("%Y")

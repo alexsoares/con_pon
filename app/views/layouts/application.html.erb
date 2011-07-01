@@ -3,15 +3,12 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>PONTUAÇÃO DOS PROFESSORES : <%= controller.action_name %></title>
-    <%= stylesheet_link_tag 'scaffold' %>
-    <%= stylesheet_link_tag 'pontuacao' %>
-    <%= stylesheet_link_tag 'msg' %>
-    <%= stylesheet_link_tag 'style' %>
+    <%= stylesheet_link_tag 'scaffold','pontuacao','msg','style','menu', :cache => true %>
     <%= stylesheet_link_tag 'impressao', :media => "print" %>
-    <%= stylesheet_link_tag 'menu' %>
-    <%= javascript_include_tag :defaults %>
-    <%= javascript_include_tag 'msg.js' %>
-    <%= javascript_include_tag 'jquery.geolocation.js' %>
+    <%= javascript_include_tag 'jquery-1.4.2.js','jquery-ui-timepicker-addon','jquery-ui-1.8.6.custom.min','jquery-ui','jrails','msg.js','application.js' %>
+    <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"%>
+
+
 </head>
 
 <body>
