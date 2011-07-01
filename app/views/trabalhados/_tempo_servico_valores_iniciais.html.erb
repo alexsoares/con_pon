@@ -8,7 +8,7 @@
      <tr>
          <td><%= f.label :tot_acum_trab, 'Dias Trabalhados Acumulados' %></td>
         <td><%= f.text_field :tot_acum_trab, :size => 3 %></td>
-        <%= f.hidden_field(:pont_base_trab, :value => '0.004') %>
+        <%= f.hidden_field(:pont_base_trab, :value => '0.008') %>
      </tr>
      <tr>
         <td><%= f.label :tot_acum_efet, 'Dias Efetivos Acumulados' %></td>
@@ -31,7 +31,7 @@
     
   </table>
 
-      <%= f.submit "Salvar", :controller => 'acum_trab/new' %>
+      <%= f.submit "Salvar"%>
    </fieldset> 
 
 

@@ -411,6 +411,8 @@ end
     if (@acum_trab).nil? or (@acum_trab).empty? then
       @acum_trab = AcumTrab.new
       render :partial => 'tempo_servico_valores_iniciais'
+      
+      
     else
       render :text => 'DADOS JÁ CADASTRADO'
     end
