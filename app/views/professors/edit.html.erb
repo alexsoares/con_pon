@@ -89,7 +89,7 @@
         <td><%= f.text_field :telefone, :size => 15 %></td>
      </tr>
      <tr>
-        <td><%= f.label :funcao, 'Função:' %></td>
+        <td><%= f.label :funcao, 'Cargo:' %></td>
         <%  if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('planejamento') then%>
           <%@cargo = Professor.find_by_sql("Select distinct(funcao) from professors")%>
           <!--<td><%= f.collection_select :funcao, @cargo, :funcao, :funcao, :include_blak => true %></td>-->

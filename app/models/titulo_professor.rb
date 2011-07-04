@@ -3,16 +3,15 @@ class TituloProfessor < ActiveRecord::Base
   validates_presence_of :professor_id, :message => ' -  PROFESSOR - PREENCHIMENTO OBRIGATÓRIO'
   validates_presence_of :titulo_id, :message => ' -  TITULO - PREENCHIMENTO OBRIGATÓRIO'
   validates_numericality_of :quantidade,:if => :verify_qtd?, :message => ' - Acima de 30 hrs'
-
+  validate :verify_qtd?
+  validate :existe_config
   belongs_to :professor
   belongs_to :titulo, :class_name => 'Titulacao', :foreign_key => "titulo_id"
   attr_accessor :user, :current, :begin_period, :end_period
-
-
-  before_save :verifica_valor_titulos
-  validate :verify_qtd?
+  
+  before_save :verifica_valor_titulos,:verifica_tipo_titulo
   before_destroy :atualiza_valor_total_apos_delecao
-  validate :existe_config
+  
 
 protected
 
@@ -33,9 +32,16 @@ protected
       if self.quantidade < 30
         errors.add(:tipo_curso, 'Curso à distancia somente acima de 30 hrs de duração')
       end
-
     end
   end
+
+  def verifica_tipo_titulo
+    if (self.titulo_id).between?(1, 4)
+      self.quantidade = 1
+    end
+    
+  end
+
 
   def verifica_valor_titulos
       self.obs.upcase!

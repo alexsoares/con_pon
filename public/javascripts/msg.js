@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 //seleciona os elementos a com atributo name="modal"
 $('a[name=modal]').click(function(e) {
 //cancela o comportamento padrão do link

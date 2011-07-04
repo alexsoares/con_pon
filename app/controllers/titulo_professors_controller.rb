@@ -230,12 +230,17 @@ class TituloProfessorsController < ApplicationController
         #page.replace_html 'tipo_titulo', :partial => 'tipo'
       end
     else
+      if $id_titulo.to_i == 1 || $id_titulo.to_i == 2 || $id_titulo.to_i == 3 || $id_titulo.to_i == 4 || $id_titulo.to_i == 8
+      render :update do |page|
+        page.replace_html "qtde", :text => "1"
+        page.replace_html 'valor', :text => 'O valor do Titulo é: ' + ($valor).to_s
+      end
+      else
       render :update do |page|
         page.replace_html 'valor', :text => 'O valor do Titulo é: ' + ($valor).to_s
-
+      end
       end
     end
-
   end
 
 

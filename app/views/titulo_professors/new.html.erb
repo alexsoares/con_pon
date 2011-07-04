@@ -20,46 +20,47 @@
     <table border="1">
       <tr>
         <td><%= f.label :professor_id, 'Professor: ' %></td>
-        <td><%= f.collection_select :professor_id, @professor_sede, :id, :matricula, :include_blank => ' -- Selecione -- ' %>
-         <%= observe_field 'titulo_professor_professor_id',
-         :with => :titulo_professor_professor_id,
-         :url => { :action => 'sel_prof' } %>      
-     </tr>
-     <tr>
-      <td colspan="2"><div id="nomeprof"></div></td>
-     </tr>     
-     <tr>
+        <td>
+          <%= f.collection_select :professor_id, @professor_sede, :id, :matricula, :include_blank => ' -- Selecione -- ' %>
+            <%= observe_field 'titulo_professor_professor_id',
+              :with => :titulo_professor_professor_id,
+              :url => { :action => 'sel_prof' } %>
+          <div id="nomeprof"></div>
+         </td>        
+       </tr>
+      <tr>
         <td><%= f.label :titulo_id, 'Titulo: ' %></td>      
         <td><%= f.collection_select :titulo_id, @titulacaos, :id, :descricao, :include_blank => ' -- Selecione -- ', :size => 5 %>
          <%= observe_field 'titulo_professor_titulo_id',
          :frequency => 0.5,
          :with => :titulo_professor_titulo_id,
          :url => { :action => 'guarda_valor' } %>                
-           <tr><td colspan="2">
-             <div id="valor"></div>
-             <div id="tipo_titulo"><%= f.check_box(:tipo_curso, :disabled => false, :checked => true)  %> Presencial?</div>
-           </td></tr>
+           <tr>
+             <td colspan="2">
+              <div id="valor"></div>
+              <div id="tipo_titulo"><%= f.check_box(:tipo_curso, :disabled => false, :checked => true)  %> Presencial?</div>
+             </td>
+           </tr>
          </td>
-    </tr>
-      <div id="valores">
-      </div>
-    <tr>
-       <td><%= f.label :obs, 'Descrição do Título:' %>
+      </tr>
+      <tr>
+       <td><%= f.label :obs, 'Descrição:' %>
        <td><%= f.text_area :obs, :size => "50x1"   %></td>
-    </tr>
+      </tr>
 
-     <tr>
+      <tr>
         <td><%= f.label :quantidade, 'Quantidade:' %></td>
-       <td><%= f.text_field(:quantidade, :size => 10)%></td>
-     </tr>
-     <tr>
-       <td><%= f.label :dt_titulo, 'Data de Emissão:' %>
-       <td><%= f.text_field(:dt_titulo, :id => "dt_titulo", :size => 10) %></td>
-    </tr>
-    
-    <td>
-    <%= f.submit "Salvar"%>
-     </td>
+        <td id="qtde"><%= f.text_field(:quantidade, :size => 10)%></td>
+      </tr>
+      <tr>
+        <td><%= f.label :dt_titulo, 'Data de Emissão:' %>
+        <td><%= f.text_field(:dt_titulo, :id => "dt_titulo", :size => 10) %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.submit "Salvar"%>
+        </td>
+      </tr>
   </table>
 <table>
      <td VALIGN=TOP>
@@ -70,14 +71,13 @@
           2. DIGITAR SEMPRE DADOS COMPLETOS <br/>
           3. NÃO UTILIZAR ACENTUAÇÃO, TIL E CEDILHA<br />
           4. NÃO UTILIZAR ABREVIAÇÕES<br />
-          5. PROFA E PROEPRE QUANTIDADE EM UNIDADE<br>
-          6. SIMPOSIOS/COMUNICAÇÕES/OUTROS CURSOS DE<br/>
-             CURTA DURAÇÃO CONTAR QUANTIDADE EM HORAS, <br/>
-             DEMAIS CURSOS QUANTIDADE EM UNIDADE <br/>
+          5. CURSOS OFER. / ACOMP. PELA SE  E OUTROS CURSOS / SIMPOSIOS / ETC DE<br/>
+             CURTA DURAÇÃO INFORMAR A QUANTIDADE EM HORAS. <br/>
+          6. DEMAIS CURSOS, LANÇA-LOS INDIVIDUALMENTE. <br/>
           7. APRESENTAÇÃO DE COMUNICAÇÃO QUE<br/>
-             ULTRAPASSAR A CARGA HORARIA 24 HRS, LANÇAR<br/>
-             A A TITULAÇÃO COMO <b>OUTROS CURSOS</b> COM<br/>
-             PONTUAÇÃO DE 0,001 POR HORA DE PARTICIPAÇÃO.
+             ULTRAPASSAR A CARGA HORARIA 24 HRS, LANÇAR A CARGA HORÁRIA DO EVENTO<br/>
+             NA OPÇÃO "OUTROS CURSOS / SIMPOSIOS / ETC".
+             
       </div>
      </td>
     </table>

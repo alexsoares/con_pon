@@ -1,24 +1,12 @@
-<div id="conteudo">
-  <%= javascript_include_tag 'jquery-ui.js' %>
-  <%= javascript_include_tag 'jquery-impromptu.3.1.min.js' %>
-    <div id="boxes" class="tela">
-    <!-- #personalize sua janela modal aqui -->
-    <div id="dialog" class="window">
-      <!-- Botão para fechar a janela tem class="close" -->
-      <a href="#" class="close">Fechar [X]</a>
-      <h4 align="center"><b style="color:red">Aviso Importante</b></h4>
-      <b style="color:green"><h5 align="center">ATENÇÃO!!!!</h5></b><h6 align="center">Para agilizar o processo em caso de esquecimento<br/> da senha de acesso ao sistema, favor atualizar<br/>seus dados de login, atualizando o endereço<br/>de email clicando no link "Edit Profile" no canto<br/>superior esquerdo da tela ou <%= link_to "Clique aqui.", edit_user_path(current_user) %>.</h6></div>
-      <!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
-    <div id="mask"></div>
-  </div>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <!-- #dialog é o id do DIV definido como mostrado a seguir  -->
-  </div>
+<div id="boxes">
+<!-- Janela Modal com Bloco de Nota -->
+<div id="dialog2" class="window">
+Ent�o?<br />
+Construir uma <b>Janela Modal Simples</b> com o formato que voc� quiser � f�cil!<br />
+Simples e totalmente personaliz�vel : ) <br /><br />
+<input type="button" value="Fechar" class="close"/>
+</div>
+<!-- Fim Janela Modal com Bloco de Nota --> 
+<div id="mask"></div>
+
+</div>

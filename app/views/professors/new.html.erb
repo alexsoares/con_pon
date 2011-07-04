@@ -83,7 +83,7 @@
        <td><%= f.text_field :telefone, :size => 15 %></td>
      </tr>
      <tr>
-       <td><%= f.label :funcao, 'Função:' %> <font color="red" size="5">*</font></td>
+       <td><%= f.label :funcao, 'Cargo:' %> <font color="red" size="5">*</font></td>
        <td>  <%= f.select :funcao, (CARGO).sort, :include_blank => '-- Selecionar --' %></td>
      </tr>
      <tr>

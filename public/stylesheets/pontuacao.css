@@ -328,6 +328,7 @@ font-size: large;
   height:203px;
 }
 
+
 #dialog1 .d-header {
   background:url(login-header.png) no-repeat 0 0 transparent;
   width:375px;
@@ -360,7 +361,7 @@ font-size: large;
 }
 
 #boxes #dialog2 {
-  background:url(notice.png) no-repeat 0 0 transparent;
+  background:url(Imagens/notice.png) no-repeat 0 0 transparent;
   width:326px;
   height:229px;
   padding:50px 0 20px 25px;
