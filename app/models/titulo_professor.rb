@@ -13,7 +13,7 @@ class TituloProfessor < ActiveRecord::Base
   before_destroy :atualiza_valor_total_apos_delecao
   
 
-protected
+
 
 
   def existe_config
@@ -26,7 +26,7 @@ protected
       self.current
     end
   end
-
+protected
   def verify_qtd?
     if !(self.tipo_curso == true) and self.titulo_id == 7
       if self.quantidade < 30
@@ -58,21 +58,25 @@ protected
         @atualiza_professor.total_titulacao = @atualiza_professor.total_titulacao + self.pontuacao_titulo
         @atualiza_professor.save
       else
-        @dta = ((existe_config.strftime("%Y").to_i) - 1).to_s + self.begin_period.strftime("-%m-%d")
+        @dta = ((existe_config.strftime("%Y").to_i) - 1).to_s + self.begin_period
         if self.dt_titulo < @dta.to_date
           self.status = 0
         else
           if (self.titulo_id == 6) or (self.titulo_id == 7) or (self.titulo_id == 8)
            #self.dt_titulo = (DTA.strftime("%Y").to_i).to_s + "-06-30"
-           self.dt_validade = ((existe_config.strftime("%Y").to_i)).to_s + self.end_period.strftime("-%m-%d")
+           self.dt_validade = ((existe_config.strftime("%Y").to_i)).to_s + self.end_period
            #self.dt_validade = "2010"
-           if self.quantidade > 180
-             self.pontuacao_titulo = 180 * self.valor
+           if self.tipo_curso == false
+             if self.quantidade > 180
+               self.pontuacao_titulo = 180 * self.valor
+               self.quantidade = 180
+             else
+              self.pontuacao_titulo = self.quantidade * self.valor
+             end
            else
-            self.pontuacao_titulo = self.quantidade * self.valor
+             self.pontuacao_titulo = self.quantidade * self.valor
            end
-
-          if (self.dt_titulo.to_s > existe_config.strftime("%Y").to_s + self.end_period.strftime("-%m-%d")) or (self.dt_titulo.to_s < (existe_config.strftime("%Y").to_i - 1).to_s + self.begin_period.strftime("-%m-%d"))
+          if (self.dt_titulo.to_s > (existe_config.strftime("%Y").to_s + self.end_period)) or (self.dt_titulo.to_s < (existe_config.strftime("%Y").to_i - 1).to_s + self.begin_period)
              self.status = 0
            else
              @atualiza_professor.total_titulacao = @atualiza_professor.total_titulacao + self.pontuacao_titulo
