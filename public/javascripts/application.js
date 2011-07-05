@@ -12,6 +12,10 @@
 	$(function() {
 		$( "#dt_ingresso" ).datepicker({dateFormat: 'dd-mm-yy'});
 	});
+	$(function() {
+		$( "#dt_nasc" ).datepicker({dateFormat: 'dd-mm-yy'});
+	});
+
 // Função para exibir datas nos titulos dos professores
 	$(function() {
 		$( "#dt_titulo" ).datepicker({dateFormat: 'dd-mm-yy'});
@@ -24,3 +28,4 @@
 	$(function() {
 		$( "#ends_at" ).datetimepicker({dateFormat: 'dd-mm-yy'});
 	});
+

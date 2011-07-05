@@ -193,14 +193,14 @@ font-size: large;
     margin:0 auto;
     background-image:url(Imagens/body.jpg);
     height:980px;
-    width:820px;
+    width:950px;
 
 }
 
 #principal{
     float:right;
     height:980px;
-    width:820px;
+    width:950px;
     background-image:url(Imagens/body.jpg);
     background-color:gray;
     font-size:10px;
