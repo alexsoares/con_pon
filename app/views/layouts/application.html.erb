@@ -6,7 +6,7 @@
     <%= stylesheet_link_tag 'scaffold','pontuacao','msg','style','menu', :cache => true %>
     <%= stylesheet_link_tag 'impressao', :media => "print" %>
     <%= javascript_include_tag 'jquery-1.4.2.js','jquery-ui-timepicker-addon','jquery-ui-1.8.6.custom.min','jquery-ui','jrails','msg.js','application.js' %>
-    <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"%>
+
 
 
 </head>
@@ -81,7 +81,7 @@ window.print();
 
                 <li><%= link_to 'Tempo Serviço', new_trabalhado_path%></li>
                 <li><%= link_to 'Títulos',new_titulo_professor_path %></li>
-
+                <li><%= link_to 'Calculos',acum_trabs_path %></li>
               <li><%= link_to_remote('Pontuação', :url => { :action => "relato_prof", :controller => "professors"}) %></li>
             </ul>
          </li>

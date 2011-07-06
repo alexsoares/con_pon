@@ -842,8 +842,6 @@ end
       @contagem_finalizada = AcumTrab.find_all_by_professor_id(@ficha.id, :conditions => ['status = 1'])
       if @contagem_finalizada.present?
         if !@possui_ficha.present?
-          ficha_ativa = Trabalhado.find(@possui_ficha.trabalhado_anterior_id)
-          ficha_ativa2 = Trabalhado.find(@possui_ficha.trabalhado_atual_id)
           if @existe.count == 2 then
             acum_trab = AcumTrab.find_by_professor_id(@ficha.id)
             @fichas = Ficha.new
@@ -872,36 +870,6 @@ end
             @fichas.trabalhado_atual_id = Trabalhado.find_by_professor_id(@ficha.id, :conditions => ['ano_letivo = ? and ano = ?',$data, $data]).id
             @fichas.ano_letivo = $data
             @fichas.save
-          end
-        else
-          if !ficha_ativa or !ficha_ativa2
-            @fichas = Ficha.new
-            @fichas.professor_id = @ficha.id
-            @fichas.acum_trab_id = acum_trab.id
-            @fichas.tot_acum_ant_trab = acum_trab.tot_acum_ant_trab
-            @fichas.tot_acum_ant_efet = acum_trab.tot_acum_ant_efet
-            @fichas.tot_acum_ant_rede = acum_trab.tot_acum_ant_rede
-            @fichas.tot_acum_ant_unid = acum_trab.tot_acum_ant_unid
-            @fichas.tot_acum_trab = acum_trab.tot_acum_trab
-            @fichas.tot_acum_efet = acum_trab.tot_acum_efet
-            @fichas.tot_acum_unid = acum_trab.tot_acum_unid
-            @fichas.tot_acum_rede = acum_trab.tot_acum_rede
-            @fichas.valor_trab = acum_trab.valor_trab
-            @fichas.valor_efet = acum_trab.valor_efet
-            @fichas.valor_rede = acum_trab.valor_rede
-            @fichas.valor_unid = acum_trab.valor_unid
-            @fichas.tot_geral_trab = acum_trab.tot_geral_trab
-            @fichas.tot_geral_efet = acum_trab.tot_geral_efet
-            @fichas.tot_geral_unid = acum_trab.tot_geral_unid
-            @fichas.tot_geral_rede = acum_trab.tot_geral_rede
-            @fichas.total_geral = @ficha.pontuacao_final
-            @fichas.total_titulacao = Professor.find(@ficha.id).total_titulacao
-            @fichas.total_trabalhado = Professor.find(@ficha.id).total_trabalhado
-            @fichas.trabalhado_anterior_id = Trabalhado.find_by_professor_id(@ficha.id, :conditions => ['ano_letivo = ? and ano = ?',$data, (($data.to_i) -1).to_s]).id
-            @fichas.trabalhado_atual_id = Trabalhado.find_by_professor_id(@ficha.id, :conditions => ['ano_letivo = ? and ano = ?',$data, $data]).id
-            @fichas.ano_letivo = $data
-            @fichas.save
-            
           end
         end
       end

@@ -20,12 +20,3 @@
 	$(function() {
 		$( "#dt_titulo" ).datepicker({dateFormat: 'dd-mm-yy'});
 	});
-
-// Função para exibir datas/hora nos Anuncios
-	$(function() {
-		$( "#starts_at" ).datetimepicker({dateFormat: 'dd-mm-yy'});
-	});
-	$(function() {
-		$( "#ends_at" ).datetimepicker({dateFormat: 'dd-mm-yy'});
-	});
-

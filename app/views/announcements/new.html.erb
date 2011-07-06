@@ -1,6 +1,18 @@
-<div id="conteudo">
-  <h1>Novo anuncio</h1>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+          <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"></script>
+          <link src="/stylesheets/jquery.ui.datetimepicker.css" rel="stylesheet" type="text/css" />
+          <script src="/javascripts/jquery.ui.datetimepicker.min.js" type="text/javascript"></script>
+          <script type="text/javascript">
+             $(function() {
+                $('#starts_at').datetimepicker({
+                      dateFormat: 'mm/dd/yyyy hh:MM TT'
+                   });
+             });
+          </script>
 
+  <div id="conteudo">
+  <h1>Novo anuncio</h1>
+  <input type="text" id="TextBox1" />
   <% form_for(@announcement) do |f| %>
     <%= f.error_messages %>
 
