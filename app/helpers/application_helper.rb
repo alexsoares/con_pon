@@ -15,4 +15,26 @@ module ApplicationHelper
     direction = column  == sort_column && sort_direction == "asc" ? "desc" : "asc"
     link_to title, {:search => search,:sort => column, :direction => direction},{:class => css_class}
   end
+
+
+  def datepicker_tag(model, attribute, options ={}, datepicker_options ={})
+    field_id = "#{model}_#{attribute}"
+    field_name = "#{model}[#{attribute}]"
+    field = ::ActionView::Helpers::InstanceTag.new(model, attribute, self)
+    options = {:id => field_id, :name => field_name}.merge(options)
+    datepicker_options = "#{options_for_javascript(datepicker_options)}"
+    js = "$(document).ready(function() { $(\"\##{field_id}\").datepicker(#{datepicker_options});});"
+    field.tag(:input, options) + javascript_tag(js)
+  end
+
+  def datetimepicker_tag(model, attribute, options ={}, datetimepicker_options = {})
+    field_id = "#{model}_#{attribute}"
+    field_name = "#{model}[#{attribute}]"
+    field = ::ActionView::Helpers::InstanceTag.new(model, attribute, self)
+    options = {:id => field_id, :name => field_name}.merge(options)
+    datetimepicker_options = "#{options_for_javascript(datetimepicker_options)}"
+    js = "$(document).ready(function() { $(\"\##{field_id}\").datetimepicker(#{datetimepicker_options});});"
+    field.tag(:input, options) + javascript_tag(js)
+  end
+
 end

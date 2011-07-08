@@ -903,7 +903,7 @@ end
            ano_anterior_dias_trab = 0
          else
           ano_anterior_dias_trab = (ano_anterior.dias_trab).to_i
-         end 
+         end
          if ano_anterior.dias_efetivos.nil?
            ano_anterior_dias_efet = 0
          else
@@ -979,7 +979,7 @@ end
 
     #@tp = TituloProfessor.find_by_professor_id(@ficha.id,:include => 'titulacao')
     @tp = TituloProfessor.find_by_sql("SELECT * FROM titulo_professors tp inner join titulacaos t on tp.titulo_id=t.id where tp.professor_id = " + (@ficha.id).to_s + " and t.tipo = 'PERMANENTE'")
-    
+
       @tp1 = TituloProfessor.find_by_sql("SELECT * FROM titulo_professors tp inner join titulacaos t on tp.titulo_id=t.id where tp.professor_id = " + (@ficha.id).to_s + " and t.tipo = 'ANUAL' and tp.ano_letivo = + " + $data.to_s)
     #@tp1 = TituloProfessor.find_by_professor_id(@ficha.id,:conditions => ['ano_letivo = ?',$data.to_s], :include => 'titulacao')
     $zerar = 1

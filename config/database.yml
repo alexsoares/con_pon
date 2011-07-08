@@ -4,7 +4,7 @@ production:
   database: pontuacao_production
   pool: 5
   username: root
-  password: s3inf05 
+  password: s3inf05
   socket: /var/run/mysqld/mysqld.sock
 
 development:

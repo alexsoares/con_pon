@@ -20,8 +20,8 @@
      </tr>
      <tr>
      <%  if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('planejamento') then%>
-        <td> <%= f.label :dt_atual, 'Data Ingresso:' %>
-        <td><%= f.date_select(:dt_ingresso,:order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 50)) %></td>
+        <td> <%= f.label :dt_ingresso, 'Data Ingresso:' %>
+        <td><%= @professor.dt_ingresso.strftime("%d-%m-%Y") %> ==> <%= datepicker_tag(:professor, :dt_ingresso,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :minDate => -20, :maxDate => "'+1M +10D'"}) %></td>
      <%else%>
         <td>Data de Ingresso:</td>
         <td><%= @professor.dt_ingresso %></td>
@@ -78,7 +78,8 @@
     </tr>
     <tr>
         <td><%= f.label :dt_nasc, 'Data de Nascimento:' %></td>
-          <td><%= f.date_select(:dt_nasc, :order => [:day, :month, :year],:start_year => (Date.today.year), :end_year => (Date.today.year - 70)) %></td>
+        <td><%= @professor.dt_nasc.strftime("%d-%m-%Y") %> ==>
+          <%= datepicker_tag(:professor, :dt_nasc,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true}) %></td>
      </tr>
      <tr>
         <td><%= f.label :jornada_sem, 'Jornada Semanal:' %></td>
@@ -89,7 +90,7 @@
         <td><%= f.text_field :telefone, :size => 15 %></td>
      </tr>
      <tr>
-        <td><%= f.label :funcao, 'Cargo:' %></td>
+        <td><%= f.label :funcao, 'Cargo (concurso):' %></td>
         <%  if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('planejamento') then%>
           <%@cargo = Professor.find_by_sql("Select distinct(funcao) from professors")%>
           <!--<td><%= f.collection_select :funcao, @cargo, :funcao, :funcao, :include_blak => true %></td>-->

@@ -22,7 +22,10 @@
       </tr>
       <tr>
         <td><%= f.label :dt_ingresso, 'Data Ingresso:' %></td>
-        <td><%= f.text_field(:dt_ingresso, :id => 'dt_ingresso',:size =>10) %></td>
+        
+          <td><%= datepicker_tag(:professor, :dt_ingresso,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-60:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'" }) %></td>
+
+
       </tr>
       <tr>
 
@@ -72,7 +75,7 @@
     </tr>
     <tr>
        <td><%= f.label :dt_nasc, 'Data de Nascimento:' %></td>
-       <td><%= f.text_field(:dt_nasc, :id => 'dt_nasc',:size =>10) %></td>
+       <td><%= datepicker_tag(:professor, :dt_nasc,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-60:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'" }) %></td>
     </tr>
     <tr>
        <td><%= f.label :jornada_sem, 'Jornada Semanal:' %></td>

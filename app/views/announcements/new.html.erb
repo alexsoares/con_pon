@@ -1,18 +1,6 @@
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-          <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"></script>
-          <link src="/stylesheets/jquery.ui.datetimepicker.css" rel="stylesheet" type="text/css" />
-          <script src="/javascripts/jquery.ui.datetimepicker.min.js" type="text/javascript"></script>
-          <script type="text/javascript">
-             $(function() {
-                $('#starts_at').datetimepicker({
-                      dateFormat: 'mm/dd/yyyy hh:MM TT'
-                   });
-             });
-          </script>
-
-  <div id="conteudo">
+ <div id="conteudo">
   <h1>Novo anuncio</h1>
-  <input type="text" id="TextBox1" />
+ 
   <% form_for(@announcement) do |f| %>
     <%= f.error_messages %>
 
@@ -22,11 +10,13 @@
     </p>
     <p>
       <%= f.label :starts_at, "Inicio em" %><br />
-      <%= f.text_field :starts_at, :id => "starts_at" %>
+      <%= datetimepicker_tag(:announcement, :starts_at,{ :size => 10},{:dateFormat => "'dd-mm-yy'"}) %>
+
+   
     </p>
     <p>
       <%= f.label :ends_at, "Termino em" %><br />
-      <%= f.text_field :ends_at, :id => "ends_at" %>
+      <%= datetimepicker_tag(:announcement, :ends_at,{ :size => 10},{:dateFormat => "'dd-mm-yy'"}) %>
     </p>
     <p>
       <%= f.submit 'Criar' %>

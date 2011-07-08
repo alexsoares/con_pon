@@ -218,7 +218,7 @@
         <%  $exibe_ano_atual_dias_unid = ano_atual.dias_unidade%>
 
     <%pontuacao = AcumTrab.find(@ficha.acum_trab)%>
-      <%if @ficha.created_at.strftime("%Y").to_i < Time.current.strftime("%Y").to_i %>
+      <%if @ficha.created_at.strftime("%Y").to_i < 2011 %>
         <%$exibe_pont_trab = pontuacao.pont_base_trab / 2%>
       <%else%>
         <%$exibe_pont_trab = pontuacao.pont_base_trab%>
@@ -319,10 +319,10 @@
 
   </tr>
   <tr>
-    <th colspan="2">
+    <th colspan="3">
       Titulo
     </th>
-    <th colspan="2">
+    <th colspan="3">
       Descricao
     </th>
     <th colspan="2">
@@ -337,23 +337,20 @@
     <th colspan="2">
       Pontuacao Obtida
     </th>
-    <th colspan="2">
-      Validade
-    </th>
   </tr>
   <%  @tp1 = TituloProfessor.find_by_sql("SELECT * FROM titulo_professors tp inner join titulacaos t on tp.titulo_id=t.id where tp.professor_id=" + (@ficha.professor.id).to_s + " and t.tipo = 'ANUAL' and tp.ano_letivo = " + @ficha.ano_letivo.to_s) %>
   <% @tp1.each do |tp1| %>
   <% if !(tp1.nil?) %>
     <tr>
-      <td colspan="2" align="left">
+      <td colspan="3" align="left">
         <%= $numero %> -
         <%= Titulacao.find_by_id(tp1).descricao %>
       </td>
-      <td colspan="2" align="center">
+      <td colspan="3" align="center">
         <%= truncate(tp1.obs,:length => 20,:omission => "...") %>
       </td>
-      <td colspan="2" align="center">
-        <%= tp1.valor %>
+      <td colspan="2" align="center">        
+          <%= tp1.valor %>
       </td>
       <td colspan="2" align="center">
         <%= tp1.quantidade %>
@@ -362,19 +359,10 @@
         <%= tp1.referencia%>
       </td>
       <td colspan="2" align="right">
-        <%= format("%.3f",tp1.pontuacao_titulo) %>
-      </td>
-      <td colspan="2" align="center">
-
-      <%if tp1.status == true then %>
-        <%= 'Válido' %>
-        <% $subtot_um = $subtot_um + (tp1.pontuacao_titulo).to_f %>
-      <%else%>
-        <%=  'Não Valido' %>
-        <%if @ficha.ano_letivo == ($data.to_i - 1)%>
-          <% $subtot_um = $subtot_um + (tp1.pontuacao_titulo).to_f %>
-        <%end%>
-      <%end%>
+          <%= format("%.3f",tp1.pontuacao_titulo) %>
+          <%if @ficha.ano_letivo == ($data.to_i - 1)%>
+            <% $subtot_um = $subtot_um + (tp1.pontuacao_titulo).to_f %>
+          <%end%>
       </td>
     </tr>
     <%$numero= $numero +1%>
@@ -388,10 +376,10 @@
     </th>
   </tr>
   <tr>
-       <th colspan="2">
+       <th colspan="3">
         Titulo
        </th>
-       <th colspan="2">
+       <th colspan="3">
         Descricao
        </th>
 
@@ -407,22 +395,25 @@
        <th colspan="2">
         Pontuacao Obtida
        </th>
-       <th colspan="2">
-        Validade
-       </th>
+
   </tr>
     <% @tp = TituloProfessor.find_by_sql("SELECT * FROM titulo_professors tp inner join titulacaos t on tp.titulo_id=t.id where tp.professor_id=" + (@ficha.professor.id).to_s + " and t.tipo = 'PERMANENTE'")%>
     <% @tp.each do |tp| %>
       <tr>
-        <td colspan="2" align="left">
+        <td colspan="3" align="left">
           <%= $numero %> -
           <%= Titulacao.find_by_id(tp.titulo_id).descricao %>
         </td>
-        <td colspan="2" align="center">
+        <td colspan="3" align="center">
           <%= truncate(tp.obs,:length => 30,:omission => "...")%>
         </td>
         <td colspan="2" align="center">
-          <%= tp.valor%>
+          <%if @ficha.created_at.strftime("%Y").to_i < 2011 && tp.titulo_id == 1 %>
+            <%= tp.valor / 2 %>
+          <%else%>
+            <%= tp.valor %>
+          <%end%>
+
         </td>
         <td colspan="2" align="center">
           <%= tp.quantidade %>
@@ -431,11 +422,16 @@
           <%= tp.referencia %>
         </td>
         <td colspan="2" align="right">
+        <%if @ficha.created_at.strftime("%Y").to_i < 2011 && tp.titulo_id == 1  %>
+          <%= format("%.3f",(tp.pontuacao_titulo - 1 )) %>
+        <%else%>
           <%= format("%.3f",tp.pontuacao_titulo) %>
+        <%end%>
+        <%if @ficha.created_at.strftime("%Y").to_i < 2011 && tp.titulo_id == 1%>
+          <% $subtot_perm = $subtot_perm + (tp.pontuacao_titulo - 1).to_f %>
+        <%else%>
           <% $subtot_perm = $subtot_perm + (tp.pontuacao_titulo).to_f %>
-        </td>
-        <td colspan="2" align="center">
-          <%= 'Valido' %>
+        <%end%>
         </td>
       </tr>
       <%$numero= $numero +1%>
