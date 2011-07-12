@@ -39,7 +39,7 @@
           </tr>
           <tr>
             <td><%= f.label :dt_titulo, 'Data de Emissão:' %>
-            <td><%= f.text_field(:dt_titulo, :id => "dt_titulo", :size => 10) %></td>
+            <td><%= datepicker_tag(:titulo_professor, :ends_at,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'"}) %></td>
           </tr>
           <tr>
             <td>

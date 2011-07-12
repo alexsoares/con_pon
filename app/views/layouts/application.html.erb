@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>PONTUAÇÃO DOS PROFESSORES : <%= controller.action_name %></title>
-    <%= stylesheet_link_tag 'scaffold','pontuacao','msg','style','menu','jquery-ui', :cache => true %>
+    <%= stylesheet_link_tag 'scaffold','pontuacao','msg','style','menu','jquery-ui','formulario', :cache => true %>
     <%= stylesheet_link_tag 'impressao', :media => "print" %>
     <%= javascript_include_tag 'jquery.min.js','jquery-ui.min.js','jquery.ui.datetimepicker.min.js',"jquery-ui-i18n.min.js",'jrails','msg','application.js' %>
 
@@ -22,6 +22,7 @@ function Imprimir(){
 window.print();
 }
 </script>
+
 <div id="contents">
 <div class="botao">    
       <div id="header">
@@ -184,6 +185,7 @@ window.print();
       </div>
     
 </div>
+
 </body>
 </html>
 

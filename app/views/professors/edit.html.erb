@@ -21,7 +21,7 @@
      <tr>
      <%  if current_user.has_role?('admin') or current_user.has_role?('supervisao') or current_user.has_role?('planejamento') then%>
         <td> <%= f.label :dt_ingresso, 'Data Ingresso:' %>
-        <td><%= @professor.dt_ingresso.strftime("%d-%m-%Y") %> ==> <%= datepicker_tag(:professor, :dt_ingresso,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :minDate => -20, :maxDate => "'+1M +10D'"}) %></td>
+        <td><%= @professor.dt_ingresso.strftime("%d-%m-%Y") %> ==> <%= datepicker_tag(:professor, :dt_ingresso,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'"}) %></td>
      <%else%>
         <td>Data de Ingresso:</td>
         <td><%= @professor.dt_ingresso %></td>
@@ -79,7 +79,7 @@
     <tr>
         <td><%= f.label :dt_nasc, 'Data de Nascimento:' %></td>
         <td><%= @professor.dt_nasc.strftime("%d-%m-%Y") %> ==>
-          <%= datepicker_tag(:professor, :dt_nasc,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true}) %></td>
+          <%= datepicker_tag(:professor, :dt_nasc,{ :size => 10},{:dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'"}) %></td>
      </tr>
      <tr>
         <td><%= f.label :jornada_sem, 'Jornada Semanal:' %></td>

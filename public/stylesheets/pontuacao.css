@@ -299,7 +299,7 @@ font-size: large;
 #mask {
   position:absolute;
   left:0;
-  top:0;
+  top:200px;
   z-index:9000;
   background-color:#000;
   display:none;
@@ -309,16 +309,17 @@ font-size: large;
   position:absolute;
   left:0;
   top:0;
-  width:440px;
-  height:200px;
+  width:840px;
+  height:800px;
   display:none;
   z-index:9999;
   padding:20px;
 }
 
 #boxes #dialog {
+ 
   width:375px;
-  height:203px;
+  height:100px;
   padding:10px;
   background-color:#ffffff;
 }
@@ -327,7 +328,6 @@ font-size: large;
   width:375px;
   height:203px;
 }
-
 
 #dialog1 .d-header {
   background:url(login-header.png) no-repeat 0 0 transparent;
