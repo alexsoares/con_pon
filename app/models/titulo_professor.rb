@@ -9,7 +9,7 @@ class TituloProfessor < ActiveRecord::Base
   belongs_to :titulo, :class_name => 'Titulacao', :foreign_key => "titulo_id"
   attr_accessor :user, :current, :begin_period, :end_period
   
-  before_save :verifica_valor_titulos,:verifica_tipo_titulo
+  before_save :verifica_tipo_titulo, :verifica_valor_titulos
   before_destroy :atualiza_valor_total_apos_delecao
   
 
