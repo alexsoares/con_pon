@@ -395,16 +395,15 @@ font-size: large;
 
 }
 
-
-
-
 .tabelas {
   border: solid 1px #666;
-  border-collapse: collapse;
+  border-collapse: separate;
   
 }
 
 .tabelas th {
+  border-collapse: collapse;
+  border: solid 1px #666;
   font-size: 10px;
   color: white;
   background-color: #404C99;
@@ -421,6 +420,8 @@ font-size: large;
 
 
 .tabelas td {
+  border: solid 1px #666;
+  border-collapse: collapse;
   padding: 4px 8px;
 }
 

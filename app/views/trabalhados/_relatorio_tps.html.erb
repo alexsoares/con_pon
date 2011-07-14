@@ -118,8 +118,14 @@
      <%  if $conta == 0 then %>
      <table width="100%">
      <tr>
-           <td width="100%" colspan="15" align="right">|<%= link_to  'Alterar', trabalhados_path %></td>
-           <td width="100%" colspan="15" align="right">|<%= link_to('Calcular', acum_trabs_path(:professor => $teacher), :confirm => "Realizar calculos", :title => "Calculos" ) %>|</td>
+      <%if @two_times.present?%>
+        <%if @two_times.count > 0%>
+          <td width="100%" colspan="15" align="right">|<%= link_to  'Alterar', trabalhados_path(:professor => "QWevxZ#{session[:professor]}HnmJKt") %>|</td>
+          <%if @two_times.count == 2%>
+            <td width="100%" colspan="15" align="right"><%= link_to('Calcular', acum_trabs_path(:professor => session[:professor]), :confirm => "Realizar calculos", :title => "Calculos" ) %>|</td>
+          <%end%>
+        <%end%>        
+      <%end%>
      </tr>
      </table>
      <%end%>

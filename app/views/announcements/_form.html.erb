@@ -6,11 +6,11 @@
     </p>
     <p>
       <%= f.label :starts_at, "Inicio em" %><br />
-      <%= datetimepicker_tag(:announcement, :starts_at,{ :size => 10},{:dateFormat => "'dd-mm-yy hh:MM'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'"}) %>
+      <%= datetimepicker_tag(:announcement, :starts_at,{ :size => 10},{:dateFormat => "'yyyy-mm-dd hh:MM TT'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'"}) %>
     </p>
     <p>
       <%= f.label :ends_at, "Termino em" %><br />
-      <%= datetimepicker_tag(:announcement, :ends_at,{ :size => 10},{:dateFormat => "'dd-mm-yy hh:MM'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'"}) %>
+      <%= datetimepicker_tag(:announcement, :ends_at,{ :size => 10},{:dateFormat => "'yyyy-mm-dd hh:MM TT'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn => "'both'"}) %>
     </p>
     <p>
       <%= f.submit 'Criar' %>

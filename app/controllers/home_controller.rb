@@ -33,6 +33,8 @@ class HomeController < ApplicationController
       if @config.end_periods ? session[:end_period] = @config.end_periods : session[:end_period] = "-06-30"
       end
     else
+        session[:begin_period] = "-11-01"
+        session[:end_period] = "-06-30"
         $data = Time.current.strftime("%Y")
         $data2 = (($data).to_i - 1)
         $existe = 0

@@ -22,7 +22,8 @@ class TrabalhadosController < ApplicationController
   end
 
 
-  def index  
+  def index
+    @busca_trab  = Trabalhado.find_all_by_professor_id((params[:professor].match(/\d+/).to_s).to_i, :conditions => ["flag = 0 and ano_letivo = ?", $data.to_s]) if params[:professor].present?
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @trabalhados }
@@ -139,7 +140,7 @@ class TrabalhadosController < ApplicationController
       if @trabalhado.update_attributes(params[:trabalhado])
         flash[:notice] = 'TEMPO DE SERVIÇO ATUALIZADO COM SUCESSO'
 
-        format.html { redirect_to new_trabalhado_path }
+        format.html { redirect_to trabalhados_path(:professor => session[:professor]) }
 
         format.xml  { head :ok }
       else
@@ -162,7 +163,7 @@ class TrabalhadosController < ApplicationController
     @log.log(current_user.id, @trabalhado.professor_id, "Excluído um tempo de serviço. Ano :#{@trabalhado.ano} - Ano letivo: #{@trabalhado.ano_letivo}")
 
     respond_to do |format|
-      format.html { redirect_to(trabalhados_url) }
+      format.html { redirect_to(trabalhados_url(:professor => session[:professor])) }
       format.xml  { head :ok }
     end
   end
@@ -236,7 +237,8 @@ class TrabalhadosController < ApplicationController
 # =======================================
 
     $teacher = params[:trabalhado_professor_id].to_i
-    
+    session[:professor] = params[:trabalhado_professor_id].to_i
+    @two_times = Trabalhado.find_all_by_professor_id(session[:professor], :conditions => ["flag = 0 and ano_letivo = ?", $data.to_s])
     if !($teacher.nil?) or !($teacher == '') then
       if (Professor.find($teacher)).nil? then
          $teacher_id = 0
